@@ -24,7 +24,7 @@
 html,body{height:100%;overflow:hidden;margin:0;padding:0}
 body{font-family:'Rajdhani',sans-serif;background:#0e1f3d;color:#fff;padding-top:env(safe-area-inset-top,0px)}
 .shell{position:relative;width:100%;height:100dvh;display:flex;flex-direction:column;overflow:hidden}
-.bg-o{position:fixed;inset:0;z-index:0;background-size:cover;background-position:center;filter:brightness(0.28);pointer-events:none}
+.bg-o{position:fixed;inset:0;z-index:0;background-size:cover;background-position:top center;filter:brightness(0.28);pointer-events:none}
 .bg-g{position:fixed;inset:0;z-index:1;pointer-events:none;background-image:linear-gradient(rgba(0,200,232,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,200,232,0.05) 1px,transparent 1px);background-size:35px 35px;animation:gm 20s linear infinite}
 @keyframes gm{0%{background-position:0 0}100%{background-position:35px 35px}}
 .fbs{position:fixed;top:0;left:0;right:0;z-index:999;padding:7px;text-align:center;font-family:'Orbitron',sans-serif;font-size:10px;letter-spacing:2px;display:flex;align-items:center;justify-content:center;gap:8px}
@@ -57,7 +57,7 @@ body{font-family:'Rajdhani',sans-serif;background:#0e1f3d;color:#fff;padding-top
 .hb4{background:rgba(0,180,100,0.2);color:#2ecc71;border:1px solid rgba(0,180,100,0.4)}
 .hd{width:1px;height:18px;background:rgba(255,255,255,0.15);flex-shrink:0}
 .ca{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;position:relative;z-index:5;min-height:0}
-.pg{display:none;padding:14px 12px 100px;max-width:700px;margin:0 auto}
+.pg{display:none;padding:8px 12px 80px;max-width:700px;margin:0 auto}
 .pg.on{display:block}
 @keyframes fu{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .bn{flex-shrink:0;position:relative;z-index:100;background:rgba(12,28,58,0.97);border-top:2px solid var(--cyan);display:flex;padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -159,7 +159,7 @@ textarea{resize:vertical;min-height:90px}
 .ei{font-size:40px;margin-bottom:10px}
 .et{font-size:13px}
 .in{background:rgba(39,174,96,0.07);border:1px solid rgba(39,174,96,0.3);border-radius:10px;padding:12px 14px;font-size:12px;color:rgba(255,255,255,0.85);line-height:1.7;margin-bottom:12px}
-.bk{background:rgba(255,255,255,0.11);border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:8px 12px;color:#fff;cursor:pointer;font-size:13px;margin-bottom:12px}
+.bk{background:rgba(0,200,232,0.15);border:1px solid rgba(0,200,232,0.4);border-radius:10px;padding:10px 16px;color:var(--cyan);cursor:pointer;font-size:13px;font-weight:600;margin-bottom:14px;display:inline-flex;align-items:center;gap:6px}
 .sp{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spn .8s linear infinite;vertical-align:middle;margin-right:6px}
 @keyframes spn{to{transform:rotate(360deg)}}
 .ok{font-size:11px;color:var(--gold);text-align:center;margin-top:4px}
@@ -303,7 +303,7 @@ textarea{resize:vertical;min-height:90px}
   </div>
 
 <div id="p-jenayah" class="pg">
-  <button class="bk" onclick="nav('p-home')">← Balik</button>
+  <button class="bk" onclick="nav('p-home')">← KEMBALI KE UTAMA</button>
   <div class="fc">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)"><span style="font-size:26px">🚨</span><div style="font-family:Orbitron,sans-serif;font-size:13px;color:#e63946">ADUAN JENAYAH</div></div>
     <form onsubmit="subForm(event,'jenayah')">
@@ -333,11 +333,12 @@ textarea{resize:vertical;min-height:90px}
       </div>
       <button type="submit" class="sbtn" id="j-btn">📤 HANTAR ADUAN JENAYAH</button>
     </form>
+  <button onclick="nav('p-home')" style="width:100%;padding:12px;background:rgba(0,200,232,0.1);border:1px solid rgba(0,200,232,0.3);border-radius:10px;color:var(--cyan);font-size:13px;font-weight:600;cursor:pointer;margin-top:8px">← KEMBALI KE HALAMAN UTAMA</button>
   </div>
 </div>
 
 <div id="p-narkotik" class="pg">
-  <button class="bk" onclick="nav('p-home')">← Balik</button>
+  <button class="bk" onclick="nav('p-home')">← KEMBALI KE UTAMA</button>
   <div class="fc">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)"><span style="font-size:26px">💊</span><div style="font-family:Orbitron,sans-serif;font-size:13px;color:#a569bd">ADUAN NARKOTIK</div></div>
     <form onsubmit="subForm(event,'narkotik')">
@@ -365,11 +366,12 @@ textarea{resize:vertical;min-height:90px}
       </div>
       <button type="submit" class="sbtn" id="n-btn" style="background:linear-gradient(135deg,#6c3483,#a569bd)">📤 HANTAR ADUAN NARKOTIK</button>
     </form>
+  <button onclick="nav('p-home')" style="width:100%;padding:12px;background:rgba(0,200,232,0.1);border:1px solid rgba(0,200,232,0.3);border-radius:10px;color:var(--cyan);font-size:13px;font-weight:600;cursor:pointer;margin-top:8px">← KEMBALI KE HALAMAN UTAMA</button>
   </div>
 </div>
 
 <div id="p-trafik" class="pg">
-  <button class="bk" onclick="nav('p-home')">← Balik</button>
+  <button class="bk" onclick="nav('p-home')">← KEMBALI KE UTAMA</button>
   <div class="fc">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)"><span style="font-size:26px">🚦</span><div style="font-family:Orbitron,sans-serif;font-size:13px;color:#f39c12">ADUAN TRAFIK</div></div>
     <form onsubmit="subForm(event,'trafik')">
@@ -396,11 +398,12 @@ textarea{resize:vertical;min-height:90px}
       </div>
       <button type="submit" class="sbtn" id="t-btn" style="background:linear-gradient(135deg,#c0392b,#f39c12)">📤 HANTAR ADUAN TRAFIK</button>
     </form>
+  <button onclick="nav('p-home')" style="width:100%;padding:12px;background:rgba(0,200,232,0.1);border:1px solid rgba(0,200,232,0.3);border-radius:10px;color:var(--cyan);font-size:13px;font-weight:600;cursor:pointer;margin-top:8px">← KEMBALI KE HALAMAN UTAMA</button>
   </div>
 </div>
 
 <div id="p-rondaan" class="pg">
-  <button class="bk" onclick="nav('p-home')">← Balik</button>
+  <button class="bk" onclick="nav('p-home')">← KEMBALI KE UTAMA</button>
   <div class="in" style="background:rgba(39,174,96,0.1);border:1px solid rgba(39,174,96,0.3);border-radius:14px;padding:14px;margin-bottom:14px">
   <div style="font-family:Orbitron,sans-serif;font-size:10px;color:#27ae60;letter-spacing:1.5px;margin-bottom:10px">ℹ️ MAKLUMAT PENTING</div>
   <div style="font-size:12px;color:rgba(255,255,255,0.85);line-height:1.9">
@@ -441,6 +444,7 @@ textarea{resize:vertical;min-height:90px}
       </div>
       <button type="submit" class="sbtn" id="r-btn" style="background:linear-gradient(135deg,#1a5c36,#27ae60)">📤 HANTAR PERMOHONAN BALIK KAMPUNG</button>
     </form>
+  <button onclick="nav('p-home')" style="width:100%;padding:12px;background:rgba(0,200,232,0.1);border:1px solid rgba(0,200,232,0.3);border-radius:10px;color:var(--cyan);font-size:13px;font-weight:600;cursor:pointer;margin-top:8px">← KEMBALI KE HALAMAN UTAMA</button>
   </div>
 </div>
 
@@ -495,6 +499,7 @@ textarea{resize:vertical;min-height:90px}
     <button onclick="sendWASubmit(window._lastReport||{});closePop();" style="width:100%;padding:12px;background:linear-gradient(135deg,#128C7E,#25D366);border:none;border-radius:10px;color:#fff;font-family:Orbitron,sans-serif;font-size:11px;font-weight:700;cursor:pointer;letter-spacing:1px;box-shadow:0 4px 15px rgba(37,211,102,0.3)">📲 TERIMA NOTIFIKASI WHATSAPP</button>
   </div>
   <button class="pc" onclick="closePop()" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);font-size:11px">✕ TUTUP TANPA NOTIFIKASI</button>
+  <button onclick="closePop();nav('p-home')" style="width:100%;padding:12px;background:linear-gradient(135deg,#0a1628,#1a3a6e);border:2px solid var(--cyan);border-radius:10px;color:var(--cyan);font-family:Orbitron,sans-serif;font-size:12px;font-weight:700;cursor:pointer;margin-top:6px;letter-spacing:1px">🏠 KEMBALI KE HALAMAN UTAMA</button>
 </div></div>
 
 <div id="det-modal" class="mo" onclick="if(event.target===this)closeDet()"><div class="ms">
