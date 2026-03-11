@@ -57,7 +57,7 @@ body{font-family:'Rajdhani',sans-serif;background:#0e1f3d;color:#fff;padding-top
 .hb4{background:rgba(0,180,100,0.2);color:#2ecc71;border:1px solid rgba(0,180,100,0.4)}
 .hd{width:1px;height:18px;background:rgba(255,255,255,0.15);flex-shrink:0}
 .ca{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;position:relative;z-index:2}
-.pg{display:none;padding:14px 12px 100px;max-width:700px;margin:0 auto;animation:fu .3s ease}
+.pg{display:none;padding:14px 12px 100px;max-width:700px;margin:0 auto}
 .pg.on{display:block}
 @keyframes fu{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .bn{position:relative;z-index:100;flex-shrink:0;background:rgba(12,28,58,0.97);border-top:2px solid var(--cyan);display:flex;padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -229,7 +229,7 @@ textarea{resize:vertical;min-height:90px}
   </div>
 
   <!-- PETAK ADMIN KHAS -->
-  <div onclick="nav('p-admin')" style="margin:4px 0 6px;cursor:pointer;background:linear-gradient(135deg,rgba(30,20,5,0.95),rgba(60,40,5,0.9));border:1.5px solid rgba(240,180,41,0.6);border-radius:16px;padding:14px 16px;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(240,180,41,0.15)">
+  <div onclick="try{nav('p-admin')}catch(e){document.querySelectorAll('.pg').forEach(p=>p.style.display='none');document.getElementById('p-admin').style.display='block';}" style="margin:4px 0 6px;cursor:pointer;background:linear-gradient(135deg,rgba(30,20,5,0.95),rgba(60,40,5,0.9));border:1.5px solid rgba(240,180,41,0.6);border-radius:16px;padding:14px 16px;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(240,180,41,0.15)">
     <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)"></div>
     <div style="display:flex;align-items:center;gap:14px">
       <div style="width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,rgba(240,180,41,0.25),rgba(180,120,0,0.2));border:1.5px solid rgba(240,180,41,0.5);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0">&#128737;</div>
@@ -457,7 +457,7 @@ textarea{resize:vertical;min-height:90px}
   <button class="bi" id="bn-aduan" onclick="nav('p-jenayah')"><span class="bic">📝</span><span class="bil">ADUAN</span></button>
   <button class="bi" id="bn-status" onclick="nav('p-status')"><span class="bic">📋</span><span class="bil">STATUS</span></button>
   <button class="bi" id="bn-stats" onclick="nav('p-stats')"><span class="bic">📊</span><span class="bil">STATISTIK</span></button>
-  <button class="bi adm" id="bn-admin" onclick="nav('p-admin')"><span class="bic">🔐</span><span class="bil">ADMIN</span></button>
+  <button class="bi adm" id="bn-admin" onclick="var p=document.getElementById('p-admin');if(p){document.querySelectorAll('.pg').forEach(function(x){x.classList.remove('on');x.style.display='';});p.classList.add('on');p.style.display='block';var c=document.querySelector('.ca');if(c)c.scrollTop=0;if(typeof adminIn!=='undefined'&&adminIn&&typeof renderDash==='function')renderDash();}"><span class="bic">🔐</span><span class="bil">ADMIN</span></button>
 </div>
 </div>
 
@@ -651,8 +651,12 @@ function toast(msg, type) {
 function nav(pid) {
   document.querySelectorAll(".pg").forEach(function(p) { p.classList.remove("on"); });
   document.querySelectorAll(".bi").forEach(function(b) { b.classList.remove("on"); });
-  document.getElementById(pid).classList.add("on");
-  document.querySelector(".ca").scrollTop = 0;
+  var target = document.getElementById(pid);
+  if (!target) { console.error("Page not found:", pid); return; }
+  target.classList.add("on");
+  var ca = document.querySelector(".ca");
+  try { if (ca) ca.scrollTop = 0; } catch(e) {}
+  try { window.scrollTo(0, 0); } catch(e) {}
   var m = { "p-home":"bn-home","p-jenayah":"bn-aduan","p-narkotik":"bn-aduan","p-trafik":"bn-aduan","p-rondaan":"bn-aduan","p-status":"bn-status","p-admin":"bn-admin","p-stats":"bn-stats" };
   var bn = document.getElementById(m[pid]);
   if (bn) bn.classList.add("on");
