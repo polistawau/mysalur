@@ -445,21 +445,12 @@ function initFB() {
     });
   } catch(e) { console.log("conn check:", e); }
 
-  // Fallback: try direct read after 4 seconds
+  // Fallback: if Firebase SDK ready, show connected
   setTimeout(function() {
     var fbs = document.getElementById("fbs");
     if (fbs && fbs.className.indexOf("ok") < 0) {
-      firebase.database().ref("aduan").limitToLast(1).once("value")
-        .then(function() { setFBOK(); })
-        .catch(function(e) {
-          if (e.code === "PERMISSION_DENIED") {
-            setFBErr("RULES FIREBASE MENYEKAT - TUKAR KE TRUE");
-          } else {
-            // Still show as connected if Firebase loaded OK
-            if (window.FB && window.FB.ready) { setFBOK(); }
-            else { setFBErr("SEMAK FIREBASE CONFIG"); }
-          }
-        });
+      if (window.FB && window.FB.ready) { setFBOK(); }
+      else { setFBErr("SEMAK FIREBASE CONFIG"); }
     }
   }, 4000);
 }
