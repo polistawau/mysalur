@@ -135,10 +135,19 @@ textarea{resize:none;height:80px}
 
 /* === STATS === */
 .sc{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:12px}
-.sn{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:12px}
-.sk{background:rgba(0,200,232,0.06);border:1px solid rgba(0,200,232,0.2);border-radius:12px;padding:12px;text-align:center}
+.sn{font-family:'Orbitron',sans-serif;font-size:26px;font-weight:700;display:block;line-height:1}
+.sg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.sk{background:rgba(0,200,232,0.06);border:1px solid rgba(0,200,232,0.2);border-radius:12px;padding:12px 8px;text-align:center;transition:background 0.2s}
 .sv{font-family:'Orbitron',sans-serif;font-size:24px;font-weight:900;color:var(--cyan)}
-.sl{font-size:10px;color:rgba(255,255,255,0.6);margin-top:3px;font-family:'Rajdhani',sans-serif;letter-spacing:0.5px}
+.sl{font-size:9px;color:rgba(255,255,255,0.5);margin-top:4px;font-family:'Rajdhani',sans-serif;letter-spacing:1px;text-transform:uppercase}
+.rd{width:100%;margin-top:8px;padding:9px;background:linear-gradient(135deg,rgba(0,200,232,0.15),rgba(0,180,210,0.1));border:1px solid rgba(0,200,232,0.4);border-radius:8px;color:var(--cyan);font-family:'Orbitron',sans-serif;font-size:9px;cursor:pointer;letter-spacing:0.5px;transition:all 0.2s}
+.rd:hover{background:rgba(0,200,232,0.25);border-color:var(--cyan)}
+.ab{padding:8px 14px;background:rgba(0,200,232,0.1);border:1px solid rgba(0,200,232,0.3);border-radius:8px;color:var(--cyan);font-family:'Orbitron',sans-serif;font-size:9px;cursor:pointer;transition:all 0.2s}
+.ab:hover{background:rgba(0,200,232,0.25)}
+.ab.ag{background:rgba(52,152,219,0.1);border-color:rgba(52,152,219,0.3);color:#3498db}
+.ab.ac{background:rgba(231,76,60,0.1);border-color:rgba(231,76,60,0.3);color:#e74c3c}
+.ab.av{background:rgba(39,174,96,0.1);border-color:rgba(39,174,96,0.3);color:#27ae60}
+.ewn{background:rgba(243,156,18,0.1);border:1px solid rgba(243,156,18,0.3);border-radius:8px;padding:8px 12px;font-size:10px;color:#f39c12;text-align:center;margin-bottom:8px}
 
 /* === REPORT CARD === */
 .rc{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:8px;cursor:pointer}
@@ -208,7 +217,18 @@ textarea{resize:none;height:80px}
 <div id="p-home" class="pg on">
   <div class="hero">
     <div class="htl">ADUAN MASYARAKAT</div>
-    <div class="hsb">PILIH KATEGORI ADUAN</div>
+    <div class="hsb" style="font-weight:700;color:var(--gold);text-shadow:0 0 12px rgba(240,180,41,0.5);letter-spacing:2px">PILIH KATEGORI ADUAN</div>
+  </div>
+  <!-- PWA INSTALL BUTTON -->
+  <div id="pwa-install-bar" style="display:none;margin:0 0 12px;background:linear-gradient(135deg,rgba(0,200,232,0.12),rgba(0,150,180,0.08));border:1.5px solid rgba(0,200,232,0.4);border-radius:14px;padding:12px 16px;cursor:pointer" onclick="triggerPWA()">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="width:44px;height:44px;border-radius:12px;background:rgba(0,200,232,0.15);border:1px solid rgba(0,200,232,0.3);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0">📲</div>
+      <div style="flex:1">
+        <div style="font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;color:var(--cyan);letter-spacing:1px">PASANG APLIKASI</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-top:2px;font-family:'Rajdhani',sans-serif">Simpan mySalur ke skrin utama telefon anda</div>
+      </div>
+      <div style="font-family:'Orbitron',sans-serif;font-size:18px;color:var(--cyan)">⊕</div>
+    </div>
   </div>
   <div class="cg">
     <div class="cc" onclick="nav('p-jenayah')">
@@ -237,43 +257,26 @@ textarea{resize:none;height:80px}
     </div>
   </div>
 
-  <!-- ADMIN CARD -->
-  <div onclick="showAdmin()" style="margin:4px 0 10px;cursor:pointer;background:linear-gradient(135deg,rgba(30,20,5,0.95),rgba(60,40,5,0.9));border:1.5px solid rgba(240,180,41,0.5);border-radius:16px;padding:14px 16px;position:relative;overflow:hidden">
-    <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)"></div>
-    <div style="display:flex;align-items:center;gap:14px">
-      <div style="width:48px;height:48px;border-radius:12px;background:rgba(240,180,41,0.15);border:1.5px solid rgba(240,180,41,0.4);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0">🛡️</div>
-      <div style="flex:1">
-        <div style="font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;color:var(--gold);letter-spacing:1px">PORTAL ADMIN</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:3px;font-family:'Rajdhani',sans-serif">Pengurusan aduan & laporan IPD Tawau</div>
-        <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
-          <span style="background:rgba(240,180,41,0.1);border:1px solid rgba(240,180,41,0.3);color:rgba(240,180,41,0.8);font-size:9px;padding:3px 8px;border-radius:8px;font-family:'Orbitron',sans-serif">📋 ADUAN</span>
-          <span style="background:rgba(0,200,232,0.08);border:1px solid rgba(0,200,232,0.25);color:rgba(0,200,232,0.8);font-size:9px;padding:3px 8px;border-radius:8px;font-family:'Orbitron',sans-serif">📊 STATISTIK</span>
-          <span style="background:rgba(39,174,96,0.08);border:1px solid rgba(39,174,96,0.25);color:rgba(39,174,96,0.8);font-size:9px;padding:3px 8px;border-radius:8px;font-family:'Orbitron',sans-serif">📄 PDF & EXCEL</span>
-        </div>
-      </div>
-      <div style="color:var(--gold);font-size:20px">›</div>
-    </div>
-  </div>
+  
 
   <!-- TALIAN KECEMASAN -->
   <div class="in">
     <div class="htl2">📞 TALIAN KECEMASAN</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-      <a href="tel:089772121" style="display:flex;align-items:center;gap:8px;background:rgba(0,200,232,0.08);border:1px solid rgba(0,200,232,0.3);border-radius:10px;padding:10px;text-decoration:none">
-        <span style="font-size:20px">📱</span>
-        <div><div style="font-family:'Orbitron',sans-serif;font-size:8px;color:rgba(255,255,255,0.5)">HOTLINE</div><div style="font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;color:var(--cyan)">089-772121</div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <a href="tel:089772121" style="display:flex;align-items:center;gap:10px;background:rgba(0,200,232,0.08);border:1px solid rgba(0,200,232,0.35);border-radius:12px;padding:12px;text-decoration:none">
+        <span style="font-size:24px">📱</span>
+        <div>
+          <div style="font-family:'Orbitron',sans-serif;font-size:8px;color:rgba(255,255,255,0.5);letter-spacing:1px">HOTLINE IPD TAWAU</div>
+          <div style="font-family:'Orbitron',sans-serif;font-size:14px;font-weight:700;color:var(--cyan);margin-top:2px">089-772121</div>
+        </div>
       </a>
-      <a href="tel:999" style="display:flex;align-items:center;gap:8px;background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.4);border-radius:10px;padding:10px;text-decoration:none;animation:rp 2s infinite">
-        <span style="font-size:20px">🚨</span>
-        <div><div style="font-family:'Orbitron',sans-serif;font-size:8px;color:rgba(255,255,255,0.5)">KECEMASAN</div><div style="font-family:'Orbitron',sans-serif;font-size:20px;font-weight:700;color:#e63946">999</div></div>
-      </a>
-      <a href="tel:994" style="display:flex;align-items:center;gap:8px;background:rgba(243,156,18,0.08);border:1px solid rgba(243,156,18,0.3);border-radius:10px;padding:10px;text-decoration:none">
-        <span style="font-size:20px">🔥</span>
-        <div><div style="font-family:'Orbitron',sans-serif;font-size:8px;color:rgba(255,255,255,0.5)">BOMBA</div><div style="font-family:'Orbitron',sans-serif;font-size:20px;font-weight:700;color:#f39c12">994</div></div>
-      </a>
-      <a href="tel:999" style="display:flex;align-items:center;gap:8px;background:rgba(39,174,96,0.08);border:1px solid rgba(39,174,96,0.3);border-radius:10px;padding:10px;text-decoration:none">
-        <span style="font-size:20px">🏥</span>
-        <div><div style="font-family:'Orbitron',sans-serif;font-size:8px;color:rgba(255,255,255,0.5)">AMBULANS</div><div style="font-family:'Orbitron',sans-serif;font-size:20px;font-weight:700;color:#27ae60">999</div></div>
+      <a href="tel:999" style="display:flex;align-items:center;gap:10px;background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.4);border-radius:12px;padding:12px;text-decoration:none;animation:rp 2s infinite">
+        <span style="font-size:24px">🚨</span>
+        <div>
+          <div style="font-family:'Orbitron',sans-serif;font-size:8px;color:rgba(255,255,255,0.5);letter-spacing:1px">KECEMASAN</div>
+          <div style="font-family:'Orbitron',sans-serif;font-size:10px;color:rgba(255,100,100,0.7);margin-top:1px">POLIS/BOMBA/APM/AMBULANS</div>
+          <div style="font-family:'Orbitron',sans-serif;font-size:22px;font-weight:700;color:#e63946;margin-top:1px">999</div>
+        </div>
       </a>
     </div>
   </div>
@@ -948,9 +951,10 @@ async function renderDash() {
   // Stats
   var sg = document.createElement("div"); sg.className = "sg";
   // Stats grid - 6 boxes
-  [["JUMLAH", total, "var(--cyan)"],["DITERIMA", byS("received"), "#3498db"],["PROSES", byS("processing"), "#f1c40f"],["TINDAKAN", byS("action"), "#27ae60"],["SELESAI", byS("closed"), "#95a5a6"],["BARU", newC, "var(--red)"]].forEach(function(s) {
+  [["JUMLAH",total,"var(--cyan)","rgba(0,200,232,0.2)"],["DITERIMA",byS("received"),"#3498db","rgba(52,152,219,0.2)"],["PROSES",byS("processing"),"#f1c40f","rgba(241,196,15,0.2)"],["TINDAKAN",byS("action"),"#27ae60","rgba(39,174,96,0.2)"],["SELESAI",byS("closed"),"#95a5a6","rgba(149,165,166,0.2)"],["BARU",newC,"var(--red)","rgba(230,57,70,0.2)"]].forEach(function(s) {
     var card = document.createElement("div"); card.className = "sk";
-    card.innerHTML = '<span class="sn" style="color:' + s[2] + '">' + s[1] + '</span><div class="sl">' + s[0] + '</div>';
+    card.style.borderColor = s[3]; card.style.background = s[3].replace("0.2","0.06");
+    card.innerHTML = '<span class="sn" style="color:'+s[2]+'">'+s[1]+'</span><div class="sl" style="color:'+s[2]+';opacity:0.8">'+s[0]+'</div>';
     sg.appendChild(card);
   });
   dash.appendChild(sg);
@@ -1229,11 +1233,34 @@ function getCatPill(cat) {
 
 window.addEventListener("beforeinstallprompt", function(e) {
   e.preventDefault(); deferPWA = e;
-  setTimeout(function() { if (!localStorage.getItem("pwa_done")) document.getElementById("ib").style.display = "block"; }, 4000);
+  setTimeout(function() { if (!localStorage.getItem("pwa_done")) { var bar=document.getElementById("pwa-install-bar"); if(bar) bar.style.display="block"; } }, 4000);
 });
 
 function doPWA() { if (deferPWA) { deferPWA.prompt(); deferPWA.userChoice.then(function(r){if(r.outcome==="accepted"){toast("✅ Aplikasi berjaya dipasang!");hideIB();}deferPWA=null;}); } }
 function hideIB() { document.getElementById("ib").style.display="none"; localStorage.setItem("pwa_done","1"); }
+
+function triggerPWA() {
+  var bar = document.getElementById("pwa-install-bar");
+  if (deferPWA) {
+    deferPWA.prompt();
+    deferPWA.userChoice.then(function(r) {
+      if (r.outcome === "accepted") {
+        toast("✅ Aplikasi mySalur berjaya dipasang!");
+        localStorage.setItem("pwa_done","1");
+        if (bar) bar.style.display = "none";
+        deferPWA = null;
+      }
+    });
+  } else {
+    var ua = navigator.userAgent.toLowerCase();
+    var isIOS = /iphone|ipad|ipod/.test(ua);
+    if (isIOS) {
+      toast("📱 iOS: Tekan butang 'Share' → 'Add to Home Screen'");
+    } else {
+      toast("📱 Buka menu browser (⋮) → 'Pasang Aplikasi' atau 'Add to Home Screen'");
+    }
+  }
+}
 function hideIOS() { document.getElementById("ios").style.display="none"; localStorage.setItem("pwa_done","1"); }
 
 if (/iphone|ipad|ipod/i.test(navigator.userAgent) && !window.navigator.standalone) {
