@@ -141,6 +141,21 @@ textarea{resize:none;height:80px}
 .sv{font-family:'Orbitron',sans-serif;font-size:24px;font-weight:900;color:var(--cyan)}
 .sl{font-size:9px;color:rgba(255,255,255,0.5);margin-top:4px;font-family:'Rajdhani',sans-serif;letter-spacing:1px;text-transform:uppercase}
 .rd{width:100%;margin-top:8px;padding:9px;background:linear-gradient(135deg,rgba(0,200,232,0.15),rgba(0,180,210,0.1));border:1px solid rgba(0,200,232,0.4);border-radius:8px;color:var(--cyan);font-family:'Orbitron',sans-serif;font-size:9px;cursor:pointer;letter-spacing:0.5px;transition:all 0.2s}
+.rl{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+.ri{background:linear-gradient(135deg,rgba(10,25,50,0.9),rgba(15,35,70,0.85));border:1px solid rgba(0,200,232,0.2);border-radius:14px;padding:14px;position:relative;overflow:hidden}
+.ri:hover{border-color:rgba(0,200,232,0.4)}
+.rs{width:100%;padding:9px 10px;background:rgba(0,0,0,0.4);border:1px solid rgba(0,200,232,0.25);border-radius:8px;color:rgba(255,255,255,0.85);font-size:11px;font-family:'Rajdhani',sans-serif;margin-bottom:6px;cursor:pointer;-webkit-appearance:none;appearance:none}
+.rs:focus{outline:none;border-color:rgba(0,200,232,0.6)}
+.rv{width:100%;margin-top:6px;padding:10px;background:linear-gradient(135deg,rgba(240,180,41,0.2),rgba(200,140,20,0.15));border:1px solid rgba(240,180,41,0.5);border-radius:8px;color:var(--gold);font-family:'Orbitron',sans-serif;font-size:9px;cursor:pointer;letter-spacing:0.5px;transition:all 0.2s;font-weight:700}
+.rv:hover{background:rgba(240,180,41,0.3);border-color:var(--gold)}
+.rv:disabled{opacity:0.5;cursor:not-allowed}
+.ok{color:#27ae60;font-size:11px;padding:6px 0;text-align:center;font-family:'Rajdhani',sans-serif}
+.nb{background:var(--red);color:#fff;font-size:8px;padding:2px 7px;border-radius:6px;font-family:'Orbitron',sans-serif;letter-spacing:0.5px;vertical-align:middle}
+.pm{background:rgba(241,196,15,0.15);border:1px solid rgba(241,196,15,0.4);color:#f1c40f;font-size:10px;padding:2px 8px;border-radius:5px;font-family:'Orbitron',sans-serif}
+.pl{background:rgba(39,174,96,0.15);border:1px solid rgba(39,174,96,0.4);color:#27ae60;font-size:10px;padding:2px 8px;border-radius:5px;font-family:'Orbitron',sans-serif}
+.dr{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.06)}
+.dk{font-size:9px;color:rgba(255,255,255,0.4);font-family:'Orbitron',sans-serif;letter-spacing:0.5px;min-width:90px;padding-top:2px;text-transform:uppercase}
+.dv{font-size:12px;color:rgba(255,255,255,0.85);font-family:'Rajdhani',sans-serif;flex:1;word-break:break-word}
 .rd:hover{background:rgba(0,200,232,0.25);border-color:var(--cyan)}
 .ab{padding:8px 14px;background:rgba(0,200,232,0.1);border:1px solid rgba(0,200,232,0.3);border-radius:8px;color:var(--cyan);font-family:'Orbitron',sans-serif;font-size:9px;cursor:pointer;transition:all 0.2s}
 .ab:hover{background:rgba(0,200,232,0.25)}
@@ -572,14 +587,15 @@ textarea{resize:none;height:80px}
 <div id="det-modal" class="dm">
   <div class="db">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-      <div style="font-family:'Orbitron',sans-serif;font-size:12px;color:var(--cyan)">BUTIRAN ADUAN</div>
+      <div id="det-title" style="font-family:'Orbitron',sans-serif;font-size:12px;color:var(--cyan)">📋 BUTIRAN ADUAN</div>
       <button onclick="closeDet()" style="background:rgba(255,255,255,0.1);border:none;border-radius:8px;padding:6px 12px;color:#fff;cursor:pointer;font-size:14px">✕</button>
     </div>
-    <div id="det-content"></div>
-    <div style="display:flex;gap:8px;margin-top:14px">
-      <button onclick="doSave('received')" style="flex:1;padding:9px;background:rgba(0,200,232,0.1);border:1px solid rgba(0,200,232,0.3);border-radius:8px;color:var(--cyan);font-size:10px;cursor:pointer;font-family:'Orbitron',sans-serif">📥 DITERIMA</button>
-      <button onclick="doSave('processing')" style="flex:1;padding:9px;background:rgba(243,156,18,0.1);border:1px solid rgba(243,156,18,0.3);border-radius:8px;color:#f39c12;font-size:10px;cursor:pointer;font-family:'Orbitron',sans-serif">⚙️ DIPROSES</button>
-      <button onclick="doSave('resolved')" style="flex:1;padding:9px;background:rgba(39,174,96,0.1);border:1px solid rgba(39,174,96,0.3);border-radius:8px;color:#27ae60;font-size:10px;cursor:pointer;font-family:'Orbitron',sans-serif">✅ SELESAI</button>
+    <div id="det-body" style="max-height:60vh;overflow-y:auto;padding-right:4px"></div>
+    <div style="display:flex;gap:6px;margin-top:14px;flex-wrap:wrap">
+      <button onclick="detSave('received')" style="flex:1;min-width:80px;padding:9px;background:rgba(52,152,219,0.15);border:1px solid rgba(52,152,219,0.4);border-radius:8px;color:#3498db;font-size:9px;cursor:pointer;font-family:'Orbitron',sans-serif">📥 DITERIMA</button>
+      <button onclick="detSave('processing')" style="flex:1;min-width:80px;padding:9px;background:rgba(243,156,18,0.15);border:1px solid rgba(243,156,18,0.4);border-radius:8px;color:#f39c12;font-size:9px;cursor:pointer;font-family:'Orbitron',sans-serif">⚙️ DIPROSES</button>
+      <button onclick="detSave('action')" style="flex:1;min-width:80px;padding:9px;background:rgba(39,174,96,0.15);border:1px solid rgba(39,174,96,0.4);border-radius:8px;color:#27ae60;font-size:9px;cursor:pointer;font-family:'Orbitron',sans-serif">✅ TINDAKAN</button>
+      <button onclick="detSave('closed')" style="flex:1;min-width:80px;padding:9px;background:rgba(149,165,166,0.15);border:1px solid rgba(149,165,166,0.4);border-radius:8px;color:#95a5a6;font-size:9px;cursor:pointer;font-family:'Orbitron',sans-serif">🔒 SELESAI</button>
     </div>
   </div>
 </div>
@@ -1184,6 +1200,8 @@ function renderStats() {
 // ==========================================
 // DETAIL MODAL
 // ==========================================
+var curDetKey = null;
+
 function showDet(key) {
   var r = reports[key]; if (!r) return;
   var labels = {nama:"Nama",tel:"No. Tel",kp:"No. KP",jenis:"Jenis",tarikh:"Tarikh",masa:"Masa",lokasi:"Lokasi",keterangan:"Keterangan",suspek:"Suspek",dadah:"Jenis Dadah",plat:"No. Plat",cedera:"Cedera",alamat:"Alamat",mula:"Berlepas",tamat:"Pulang",destinasi:"Destinasi",jiran:"Jiran"};
@@ -1202,10 +1220,20 @@ function showDet(key) {
     d.innerHTML = '<div class="tt">' + new Date(a.time).toLocaleString("ms-MY") + '</div><div style="font-size:12px;margin-top:2px">' + a.text + '</div>' + (a.actionLabel ? '<span class="ta">' + a.actionLabel + '</span>' : '');
     body.appendChild(d);
   });
+  curDetKey = key;
   document.getElementById("det-title").textContent = "📋 " + (r.ref || key);
   document.getElementById("det-modal").classList.add("on");
 }
-function closeDet() { document.getElementById("det-modal").classList.remove("on"); }
+function closeDet() { document.getElementById("det-modal").classList.remove("on"); curDetKey = null; }
+async function detSave(newStatus) {
+  if (!curDetKey) return;
+  var fb = window.FB; if (!fb || !fb.ready) { toast("Firebase belum bersedia","terr"); return; }
+  try {
+    await fb.update(fb.ref(fb.db, "aduan/" + curDetKey), { status: newStatus, isNew: false });
+    toast("✅ Status dikemaskini!");
+    closeDet();
+  } catch(e) { toast("❌ Gagal: " + e.message, "terr"); }
+}
 
 // ==========================================
 // HELPER
