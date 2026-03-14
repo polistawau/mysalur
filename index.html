@@ -243,6 +243,17 @@ textarea{resize:none;height:80px}
 .sml{font-size:8px;color:rgba(255,255,255,0.45);margin-top:4px;font-family:'Rajdhani',sans-serif;letter-spacing:1px;text-transform:uppercase}
 
 /* Leaflet dark mode fix */
+@keyframes pulse-red {
+  0%,100%{transform:scale(1);opacity:1}
+  50%{transform:scale(1.4);opacity:0.5}
+}
+@keyframes pulse-yel {
+  0%,100%{transform:scale(1);opacity:0.9}
+  50%{transform:scale(1.25);opacity:0.4}
+}
+.dark-popup .leaflet-popup-content-wrapper{background:#0e1f3d !important;border:1px solid rgba(0,200,232,0.3) !important;color:#fff !important}
+.dark-popup .leaflet-popup-tip{background:#0e1f3d !important}
+/* Leaflet dark mode fix */
 .leaflet-container { background:#1a2a4a !important; }
 .leaflet-tile { filter: brightness(0.85) saturate(0.9); }
 .leaflet-popup-content-wrapper { border-radius:8px !important; padding:0 !important; overflow:hidden; background:#0e1f3d !important; border:1px solid rgba(0,200,232,0.3) !important; color:#fff !important; }
@@ -361,11 +372,11 @@ textarea{resize:none;height:80px}
       <span style="font-family:'Orbitron',sans-serif;font-size:7px;letter-spacing:3px;color:rgba(0,220,255,0.35);text-transform:uppercase;">CLASSIFIED</span>
       <div style="height:1px;width:40px;background:linear-gradient(90deg,rgba(0,220,255,0.4),transparent);"></div>
     </div>
-    <div style="font-family:'Orbitron',sans-serif;font-size:8px;letter-spacing:2px;background:linear-gradient(90deg,#00bcd4,#0ff,#00bcd4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-transform:uppercase;filter:drop-shadow(0 0 6px rgba(0,255,255,0.3))">
+    <div style="font-family:'Orbitron',sans-serif;font-size:8px;letter-spacing:2px;background:linear-gradient(90deg,#00bcd4,#0ff,#00bcd4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-transform:uppercase;font-weight:700;filter:drop-shadow(0 0 8px rgba(0,255,255,0.5))">
       &copy; HAK CIPTA TERPELIHARA
     </div>
     <div style="font-family:'Courier New',monospace;font-size:7.5px;letter-spacing:1.5px;color:rgba(0,200,220,0.5);margin-top:3px;text-transform:uppercase;">
-      HASRI &nbsp;&#x2F;&gt;&nbsp; UNIT MEDIA &nbsp;&#x2F;&gt;&nbsp; IPD TAWAU
+      TECHNOLOGY DESIGN SYSTEM &nbsp;&#x2F;&gt;&nbsp; CREATE BY <span style="color:rgba(0,220,255,0.75);font-weight:700;font-family:'Orbitron',sans-serif;font-size:7px;letter-spacing:2px">HASRI (ANCHOR)</span>
     </div>
   </div>
 </div>
@@ -1759,155 +1770,154 @@ function initStatMap(rpts) {
   var mapEl = document.getElementById("stat-map");
   if (!mapEl) return;
 
-  // Warna mengikut kategori
-  var catColor = {jenayah:"#e63946", narkotik:"#a569bd", trafik:"#f39c12", rondaan:"#27ae60"};
-  var catIcon  = {jenayah:"🚨", narkotik:"💊", trafik:"🚦", rondaan:"🏠"};
+  // ── Warna KEUTAMAAN (bulatan merah/kuning/hijau) ──
+  var priColor = { high:"#e63946", med:"#f1c40f", low:"#27ae60" };
+  var priLabel = { high:"TINGGI", med:"SEDERHANA", low:"RENDAH" };
+  var priRing  = { high:"#ff0000", med:"#ffcc00", low:"#00cc44" };
+  var catIcon  = { jenayah:"🚨", narkotik:"💊", trafik:"🚦", rondaan:"🏠" };
+  var catLabel = { jenayah:"Jenayah", narkotik:"Narkotik", trafik:"Trafik", rondaan:"Balik Kampung" };
 
-  // Tapis aduan yang ada koordinat GPS
+  // Tapis aduan ada GPS
   var withGPS = (rpts||[]).filter(function(r){
-    return r.gpsLat && r.gpsLng && !isNaN(parseFloat(r.gpsLat)) && !isNaN(parseFloat(r.gpsLng));
+    return r.gpsLat && r.gpsLng &&
+           !isNaN(parseFloat(r.gpsLat)) && !isNaN(parseFloat(r.gpsLng));
   });
 
-  // Inisialisasi Leaflet map
+  // Reset map jika dah ada
   if (!_statMap) {
-    mapEl.style.height = "320px";
-    _statMap = L.map(mapEl, {
-      center: [4.2448, 117.8910],
-      zoom: 11,
-      zoomControl: true,
-    });
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      maxZoom: 18,
+    mapEl.style.height = "340px";
+    _statMap = L.map(mapEl, { center:[4.2448,117.8910], zoom:11, zoomControl:true });
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      maxZoom:18
     }).addTo(_statMap);
 
-    // Tambah label kawasan penting Tawau
+    // Label kawasan penting
     var kawasan = [
-      {n:"Bandar Tawau", lat:4.2448, lng:117.8910},
-      {n:"Balong", lat:4.2850, lng:117.9100},
-      {n:"Apas", lat:4.2100, lng:117.8600},
-      {n:"Merotai", lat:4.3800, lng:117.9500},
-      {n:"Kalabakan", lat:4.3500, lng:117.4800},
-      {n:"Semporna", lat:4.4748, lng:118.6083},
-      {n:"Lahad Datu", lat:5.0273, lng:118.3338},
-      {n:"Kunak", lat:4.6833, lng:118.2167},
+      {n:"Bandar Tawau",    lat:4.2448,  lng:117.8910},
+      {n:"Tanjung Batu",    lat:4.2100,  lng:117.9300},
+      {n:"Balung",          lat:4.2850,  lng:117.9100},
+      {n:"Apas",            lat:4.2100,  lng:117.8600},
+      {n:"Merotai",         lat:4.3800,  lng:117.9500},
+      {n:"Kalabakan",       lat:4.3500,  lng:117.4800},
+      {n:"Bandar Sri Indah",lat:4.5200,  lng:118.0600},
+      {n:"Semporna",        lat:4.4748,  lng:118.6083},
     ];
     kawasan.forEach(function(k){
-      L.marker([k.lat, k.lng], {
+      L.marker([k.lat,k.lng], {
         icon: L.divIcon({
-          html: '<div style="background:rgba(0,0,0,0.55);color:#fff;padding:2px 6px;border-radius:4px;font-size:10px;font-family:sans-serif;white-space:nowrap;border:1px solid rgba(255,255,255,0.3)">'+k.n+'</div>',
-          className: '', iconAnchor:[0,0]
+          html:'<div style="background:rgba(0,0,0,0.6);color:rgba(255,255,255,0.8);padding:2px 5px;border-radius:4px;font-size:9px;font-family:sans-serif;white-space:nowrap;border:1px solid rgba(255,255,255,0.2)">'+k.n+'</div>',
+          className:'', iconAnchor:[0,0]
         })
       }).addTo(_statMap);
     });
   } else {
-    // Buang marker lama
     _statMapMarkers.forEach(function(m){ _statMap.removeLayer(m); });
     _statMapMarkers = [];
+    // Buang legend lama
+    if (_statMap._legendCtrl) { _statMap.removeControl(_statMap._legendCtrl); }
   }
 
+  // ── Mesej jika tiada GPS ──
   if (!withGPS.length) {
-    // Tiada GPS - tunjuk mesej
-    var noGpsControl = L.control({position:"topright"});
-    noGpsControl.onAdd = function(){
+    var noGps = L.control({position:"topright"});
+    noGps.onAdd = function(){
       var d = L.DomUtil.create("div");
-      d.style.cssText = "background:rgba(0,0,0,0.7);color:rgba(255,200,0,0.9);padding:6px 10px;border-radius:6px;font-size:11px;font-family:sans-serif";
-      d.innerHTML = "⚠️ Tiada data GPS pada aduan";
+      d.style.cssText = "background:rgba(0,0,0,0.75);color:#f1c40f;padding:8px 12px;border-radius:8px;font-size:11px;font-family:sans-serif;max-width:200px;line-height:1.5";
+      d.innerHTML = "⚠️ Tiada data GPS<br><span style='font-size:9px;color:rgba(255,255,255,0.5)'>Pengguna perlu klik butang GPS semasa menghantar aduan</span>";
       return d;
     };
-    noGpsControl.addTo(_statMap);
+    noGps.addTo(_statMap);
     return;
   }
 
-  // Plot setiap aduan dengan custom marker
+  // ── Plot marker mengikut KEUTAMAAN ──
   var bounds = [];
-  withGPS.forEach(function(r){
+  var countPri = {high:0, med:0, low:0};
+
+  withGPS.forEach(function(r) {
     var lat = parseFloat(r.gpsLat);
     var lng = parseFloat(r.gpsLng);
-    var color = catColor[r.cat] || "#00c8e8";
-    var icon  = catIcon[r.cat]  || "📍";
-    var statLabel = {received:"Diterima",processing:"Dalam Proses",action:"Tindakan",closed:"Selesai"}[r.status] || r.status;
-    var priLabel  = {high:"🔴 Tinggi",med:"🟡 Sederhana",low:"🟢 Rendah"}[r.priority] || "";
+    var pri = r.priority || "med";
+    var color = priColor[pri] || "#f1c40f";
+    var ring  = priRing[pri]  || "#ffcc00";
+    var icon  = catIcon[r.cat] || "📍";
+    countPri[pri] = (countPri[pri]||0) + 1;
 
-    // Custom pulsing marker
-    var markerHtml = [
-      '<div style="position:relative">',
-        '<div style="',
-          'width:28px;height:28px;',
-          'background:'+color+';',
-          'border:2px solid #fff;',
-          'border-radius:50% 50% 50% 0;',
-          'transform:rotate(-45deg);',
-          'box-shadow:0 2px 8px rgba(0,0,0,0.4);',
-        '"></div>',
-        '<div style="',
-          'position:absolute;top:3px;left:5px;',
-          'font-size:13px;',
-          'transform:rotate(45deg);',
-        '">'+icon+'</div>',
-      '</div>'
-    ].join('');
+    // Bulatan dengan warna keutamaan + denyutan untuk HIGH
+    var pulse = pri === "high"
+      ? "animation:pulse-red 1.2s infinite;"
+      : pri === "med"
+      ? "animation:pulse-yel 2s infinite;"
+      : "";
 
-    var marker = L.marker([lat, lng], {
+    var markerHtml =
+      '<div style="position:relative;width:36px;height:36px">' +
+        // Outer ring - denyut
+        '<div style="position:absolute;inset:0;border-radius:50%;background:'+color+'22;border:2px solid '+ring+';'+pulse+'"></div>' +
+        // Inner circle
+        '<div style="position:absolute;inset:4px;border-radius:50%;background:'+color+';border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center">' +
+          '<span style="font-size:12px;line-height:1">'+icon+'</span>' +
+        '</div>' +
+      '</div>';
+
+    var statL = {received:"Diterima",processing:"Dalam Proses",action:"Tindakan Diambil",closed:"Selesai"};
+
+    var popup =
+      '<div style="font-family:sans-serif;min-width:200px;background:#0e1f3d;color:#fff;border-radius:4px">' +
+        '<div style="background:'+color+';color:#fff;padding:7px 10px;margin:-9px -9px 8px;border-radius:4px 4px 0 0;font-weight:600;font-size:11px;display:flex;align-items:center;gap:6px">' +
+          '<span>'+icon+'</span><span>'+r.ref+'</span>' +
+          '<span style="margin-left:auto;background:rgba(0,0,0,0.3);padding:1px 6px;border-radius:4px;font-size:9px">'+priLabel[pri]+'</span>' +
+        '</div>' +
+        '<table style="width:100%;font-size:11px;border-collapse:collapse;color:#fff">' +
+          '<tr><td style="color:rgba(255,255,255,0.5);padding:3px 4px;width:70px">Kategori</td><td style="padding:3px 4px;font-weight:500">'+icon+' '+(catLabel[r.cat]||r.cat)+'</td></tr>' +
+          '<tr><td style="color:rgba(255,255,255,0.5);padding:3px 4px">Jenis</td><td style="padding:3px 4px">'+(r.jenis||"-")+'</td></tr>' +
+          '<tr><td style="color:rgba(255,255,255,0.5);padding:3px 4px">Pelapor</td><td style="padding:3px 4px">'+(r.anon?"Tanpa Nama":(r.nama||"-"))+'</td></tr>' +
+          '<tr><td style="color:rgba(255,255,255,0.5);padding:3px 4px">Lokasi</td><td style="padding:3px 4px">'+(r.lokasi||r.alamat||"-")+'</td></tr>' +
+          '<tr><td style="color:rgba(255,255,255,0.5);padding:3px 4px">Tarikh</td><td style="padding:3px 4px">'+new Date(r.submittedAt).toLocaleDateString("ms-MY")+'</td></tr>' +
+          '<tr><td style="color:rgba(255,255,255,0.5);padding:3px 4px">Status</td><td style="padding:3px 4px">'+(statL[r.status]||r.status||"-")+'</td></tr>' +
+          '<tr><td style="color:rgba(255,255,255,0.5);padding:3px 4px">Keutamaan</td>' +
+            '<td style="padding:3px 4px"><span style="background:'+color+';color:#fff;padding:1px 6px;border-radius:4px;font-size:10px;font-weight:500">'+priLabel[pri]+'</span></td></tr>' +
+          (r.gpsLat?'<tr><td style="color:rgba(255,255,255,0.5);padding:3px 4px">GPS</td><td style="padding:3px 4px;font-size:10px;color:rgba(255,255,255,0.6)">'+parseFloat(r.gpsLat).toFixed(5)+', '+parseFloat(r.gpsLng).toFixed(5)+'</td></tr>':'') +
+        '</table>' +
+      '</div>';
+
+    var marker = L.marker([lat,lng], {
       icon: L.divIcon({
         html: markerHtml,
-        className: '',
-        iconSize: [28, 28],
-        iconAnchor: [14, 28],
-        popupAnchor: [0, -30],
+        className: "",
+        iconSize: [36,36],
+        iconAnchor: [18,18],
+        popupAnchor: [0,-20],
       })
     });
-
-    // Popup maklumat
-    var popupContent = [
-      '<div style="font-family:sans-serif;min-width:180px;background:#0e1f3d;color:#fff">',
-        '<div style="background:'+color+';color:#fff;padding:6px 10px;margin:-9px -9px 8px;border-radius:4px 4px 0 0;font-weight:500;font-size:11px">',
-          icon+' '+r.ref,
-        '</div>',
-        '<table style="width:100%;font-size:11px;border-collapse:collapse">',
-          '<tr><td style="color:rgba(255,255,255,0.5);padding:2px 4px">Jenis</td><td style="padding:2px 4px;font-weight:400;color:#fff">'+( r.jenis||r.cat||'-')+'</td></tr>',
-          '<tr><td style="color:rgba(255,255,255,0.5);padding:2px 4px">Pelapor</td><td style="padding:2px 4px;color:rgba(255,255,255,0.9)">'+(r.anon?"Tanpa Nama":(r.nama||"-"))+'</td></tr>',
-          '<tr><td style="color:rgba(255,255,255,0.5);padding:2px 4px">Lokasi</td><td style="padding:2px 4px;color:rgba(255,255,255,0.9)">'+(r.lokasi||r.alamat||"-")+'</td></tr>',
-          '<tr><td style="color:rgba(255,255,255,0.5);padding:2px 4px">Tarikh</td><td style="padding:2px 4px;color:rgba(255,255,255,0.9)">'+new Date(r.submittedAt).toLocaleDateString("ms-MY")+'</td></tr>',
-          '<tr><td style="color:rgba(255,255,255,0.5);padding:2px 4px">Status</td><td style="padding:2px 4px;color:rgba(255,255,255,0.9)">'+statLabel+'</td></tr>',
-          '<tr><td style="color:rgba(255,255,255,0.5);padding:2px 4px">Keutamaan</td><td style="padding:2px 4px;color:rgba(255,255,255,0.9)">'+priLabel+'</td></tr>',
-          (r.gpsLat?'<tr><td style="color:rgba(255,255,255,0.5);padding:2px 4px">GPS</td><td style="padding:2px 4px;font-size:10px">'+parseFloat(r.gpsLat).toFixed(5)+", "+parseFloat(r.gpsLng).toFixed(5)+'</td></tr>':''),
-        '</table>',
-      '</div>'
-    ].join('');
-
-    marker.bindPopup(popupContent, {maxWidth:240});
+    marker.bindPopup(popup, {maxWidth:240, className:"dark-popup"});
     marker.addTo(_statMap);
     _statMapMarkers.push(marker);
-    bounds.push([lat, lng]);
+    bounds.push([lat,lng]);
   });
 
-  // Fit map ke semua marker
-  if (bounds.length === 1) {
-    _statMap.setView(bounds[0], 14);
-  } else if (bounds.length > 1) {
-    _statMap.fitBounds(bounds, {padding:[30,30], maxZoom:14});
-  }
+  // Fit bounds
+  if (bounds.length===1) _statMap.setView(bounds[0],14);
+  else if (bounds.length>1) _statMap.fitBounds(bounds, {padding:[40,40], maxZoom:14});
 
-  // Legend
+  // ── Legend KEUTAMAAN ──
   var legend = L.control({position:"bottomright"});
   legend.onAdd = function(){
     var d = L.DomUtil.create("div");
-    d.style.cssText = "background:rgba(0,0,0,0.75);padding:8px 10px;border-radius:8px;font-size:10px;font-family:sans-serif;color:#fff;line-height:1.8";
-    d.innerHTML = [
-      "<b style='font-size:11px'>LEGENDA</b><br>",
-      "<span style='color:#e63946'>🚨</span> Jenayah ("+withGPS.filter(function(r){return r.cat==="jenayah";}).length+")<br>",
-      "<span style='color:#a569bd'>💊</span> Narkotik ("+withGPS.filter(function(r){return r.cat==="narkotik";}).length+")<br>",
-      "<span style='color:#f39c12'>🚦</span> Trafik ("+withGPS.filter(function(r){return r.cat==="trafik";}).length+")<br>",
-      "<span style='color:#27ae60'>🏠</span> Balik Kampung ("+withGPS.filter(function(r){return r.cat==="rondaan";}).length+")<br>",
-      "<hr style='border-color:rgba(255,255,255,0.2);margin:4px 0'>",
-      "<b>Jumlah: "+withGPS.length+" aduan</b>",
-    ].join('');
+    d.style.cssText = "background:rgba(0,0,0,0.82);padding:10px 12px;border-radius:10px;font-size:11px;font-family:sans-serif;color:#fff;line-height:2;border:1px solid rgba(255,255,255,0.15)";
+    d.innerHTML =
+      "<div style='font-size:10px;letter-spacing:1px;color:rgba(255,255,255,0.5);margin-bottom:4px;font-family:sans-serif'>KEUTAMAAN</div>" +
+      "<div style='display:flex;align-items:center;gap:7px'><div style='width:14px;height:14px;border-radius:50%;background:#e63946;border:2px solid #fff;flex-shrink:0'></div> <span>TINGGI</span> <b style='color:#e63946;margin-left:4px'>"+countPri.high+"</b></div>" +
+      "<div style='display:flex;align-items:center;gap:7px'><div style='width:14px;height:14px;border-radius:50%;background:#f1c40f;border:2px solid #fff;flex-shrink:0'></div> <span>SEDERHANA</span> <b style='color:#f1c40f;margin-left:4px'>"+countPri.med+"</b></div>" +
+      "<div style='display:flex;align-items:center;gap:7px'><div style='width:14px;height:14px;border-radius:50%;background:#27ae60;border:2px solid #fff;flex-shrink:0'></div> <span>RENDAH</span> <b style='color:#27ae60;margin-left:4px'>"+countPri.low+"</b></div>" +
+      "<hr style='border-color:rgba(255,255,255,0.1);margin:5px 0'>" +
+      "<div style='font-size:10px;color:rgba(255,255,255,0.45)'>Jumlah plot: "+withGPS.length+" aduan</div>";
     return d;
   };
   legend.addTo(_statMap);
+  _statMap._legendCtrl = legend;
 
-  // Invalidate size selepas render
   setTimeout(function(){ if(_statMap) _statMap.invalidateSize(); }, 300);
 }
 
