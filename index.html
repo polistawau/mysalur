@@ -701,6 +701,13 @@ textarea{resize:none;height:80px}
       <div id="n-gpsstat" style="font-size:11px;color:rgba(0,200,232,0.7);min-height:16px;margin-bottom:8px"></div>
       <div class="fg"><div class="fl">KETERANGAN <span>*</span></div><textarea id="n-kt" placeholder="Huraikan kejadian..." required></textarea></div>
       <div class="fg"><div class="fl">PERIHAL SUSPEK</div><textarea id="n-sp" placeholder="Ciri-ciri suspek (jika ada)..."></textarea></div>
+            <div class="fg"><div class="fl">KEUTAMAAN</div>
+        <select id="n-pr">
+          <option value="med">Sederhana</option>
+          <option value="high">Tinggi - Kecemasan</option>
+          <option value="low">Rendah - Maklumat</option>
+        </select>
+      </div>
       <button type="submit" class="sbtn" id="n-btn" style="border-color:#a569bd;color:#a569bd">📤 HANTAR ADUAN NARKOTIK</button>
     </form>
   </div>
@@ -852,6 +859,13 @@ textarea{resize:none;height:80px}
       </div>
       <div id="t-gpsstat" style="font-size:11px;color:rgba(0,200,232,0.7);min-height:16px;margin-bottom:8px"></div>
       <div class="fg"><div class="fl">KETERANGAN <span>*</span></div><textarea id="t-kt" placeholder="Huraikan kejadian..." required></textarea></div>
+            <div class="fg"><div class="fl">KEUTAMAAN</div>
+        <select id="t-pr">
+          <option value="med">Sederhana</option>
+          <option value="high">Tinggi - Kecemasan</option>
+          <option value="low">Rendah - Maklumat</option>
+        </select>
+      </div>
       <button type="submit" class="sbtn" id="t-btn" style="border-color:#f39c12;color:#f39c12">📤 HANTAR ADUAN TRAFIK</button>
     </form>
   </div>
@@ -1191,9 +1205,9 @@ async function subForm(e, cat) {
   if (cat === "jenayah") {
     Object.assign(r, { nama: anon.j ? "TANPA NAMA" : g("j-nm"), tel: g("j-tl"), kp: g("j-kp"), jenis: g("j-jn"), tarikh: g("j-dt"), masa: g("j-ms"), lokasi: g("j-lk"), keterangan: g("j-kt"), suspek: g("j-sp"), priority: g("j-pr"), anon: anon.j, gpsLat: g("j-lat"), gpsLng: g("j-lng") });
   } else if (cat === "narkotik") {
-    Object.assign(r, { nama: anon.n ? "TANPA NAMA" : g("n-nm"), tel: g("n-tl"), jenis: g("n-jn"), dadah: g("n-dd"), lokasi: g("n-lk"), keterangan: g("n-kt"), suspek: g("n-sp"), anon: anon.n, priority: "high", gpsLat: g("n-lat"), gpsLng: g("n-lng") });
+    Object.assign(r, { nama: anon.n ? "TANPA NAMA" : g("n-nm"), tel: g("n-tl"), jenis: g("n-jn"), dadah: g("n-dd"), lokasi: g("n-lk"), keterangan: g("n-kt"), suspek: g("n-sp"), anon: anon.n, priority: g("n-pr")||"high", gpsLat: g("n-lat"), gpsLng: g("n-lng") });
   } else if (cat === "trafik") {
-    Object.assign(r, { nama: g("t-nm"), tel: g("t-tl"), jenis: g("t-jn"), plat: g("t-pl"), tarikh: g("t-dt"), lokasi: g("t-lk"), cedera: g("t-cd"), keterangan: g("t-kt"), priority: ["ya-parah","maut"].includes(g("t-cd")) ? "high" : "med", gpsLat: g("t-lat"), gpsLng: g("t-lng") });
+    Object.assign(r, { nama: g("t-nm"), tel: g("t-tl"), jenis: g("t-jn"), plat: g("t-pl"), tarikh: g("t-dt"), lokasi: g("t-lk"), cedera: g("t-cd"), keterangan: g("t-kt"), priority: g("t-pr") || (["ya-parah","maut"].includes(g("t-cd")) ? "high" : "med"), gpsLat: g("t-lat"), gpsLng: g("t-lng") });
   } else if (cat === "rondaan") {
     Object.assign(r, { nama: g("r-nm"), kp: g("r-kp"), tel: g("r-tl"), tel2: g("r-t2"), alamat: g("r-al"), mula: g("r-ml"), tamat: g("r-tm"), destinasi: g("r-ds"), jenisDiami: g("r-jn"), jiran: g("r-jr"), maklumat: g("r-mk"), jenis: "Permohonan Balik Kampung", priority: "low" });
   }
