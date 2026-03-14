@@ -1887,26 +1887,16 @@ function renderStats() {
     var mk = d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0");
     byMonth[mk]=(byMonth[mk]||0)+1;
     byYear[String(d.getFullYear())]=(byYear[String(d.getFullYear())]||0)+1;
-    // Kawasan matching
-    var lok = (r.lokasi||r.alamat||"").toUpperCase();
+    // Kawasan matching - EXACT dari dropdown sahaja
+    var lok = (r.lokasi||r.alamat||"").trim().toUpperCase();
     if (lok) {
-      kawasanTawau.forEach(function(k){
-        if (lok.indexOf(k.toUpperCase())>-1) {
-          byLokasi[k]=(byLokasi[k]||0)+1;
-        }
+      // Cari exact match dalam senarai kawasan tetap
+      var exactMatch = kawasanTawau.find(function(k){
+        return k.toUpperCase() === lok;
       });
-      // Juga tambah dari GPS jika ada lokasi manual
-      var words = lok.split(/[\s,\/]+/);
-      words.forEach(function(w){
-        if (w.length>3 && !["JALAN","LORONG","TAMAN","BLOK","UNIT","NO","KM","BATU"].includes(w)) {
-          var matched = kawasanTawau.find(function(k){ return k.toUpperCase()===w; });
-          if (!matched) {
-            // Tambah lokasi custom
-            if (!byLokasi[w]) byLokasi[w]=0;
-            byLokasi[w]++;
-          }
-        }
-      });
+      if (exactMatch) {
+        byLokasi[exactMatch] = (byLokasi[exactMatch]||0) + 1;
+      }
     }
   });
 
@@ -1952,7 +1942,7 @@ function renderStats() {
     '<div id="stat-lokasi" style="display:'+(curTab==='lokasi'?'block':'none')+'">',
       // Kawasan bar chart
       '<div class="stbox" style="margin-bottom:10px">',
-        '<div class="stlbl">🔴 KAWASAN SENARAI HITAM — PERLU PERHATIAN</div>',
+        '<div class="stlbl">📍 KAWASAN DAERAH TAWAU — STATISTIK ADUAN</div>',
         '<div id="lokasi-bars" style="margin-top:8px"></div>',
       '</div>',
       // Kawasan kosong / selamat
@@ -1978,7 +1968,7 @@ function renderStats() {
   var barsEl = document.getElementById("lokasi-bars");
   if (barsEl) {
     if (!lokEntries.length) {
-      barsEl.innerHTML = '<div style="text-align:center;color:rgba(255,255,255,0.3);font-size:11px;padding:12px">Tiada data lokasi — pengguna belum isi kawasan</div>';
+      barsEl.innerHTML = '<div style="text-align:center;color:rgba(255,255,255,0.35);font-size:11px;padding:20px;font-family:Rajdhani,sans-serif">📭 Belum ada aduan dari mana-mana kawasan</div>';
     } else {
       var maxLok = lokEntries[0][1] || 1;
       barsEl.innerHTML = lokEntries.map(function(e,i) {
