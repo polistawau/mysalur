@@ -178,7 +178,7 @@ textarea{resize:none;height:80px}
 /* === STATUS === */
 .tr{display:flex;gap:8px;margin-bottom:12px}
 #tri{flex:1;background:rgba(255,255,255,0.07);border:1px solid var(--border);border-radius:10px;padding:10px;color:#fff;font-size:13px;font-family:'Rajdhani',sans-serif;outline:none}
-.tb{background:var(--cyan);border:none;border-radius:10px;padding:10px 16px;color:#000;font-weight:700;cursor:pointer;font-size:16px}
+.tb{background:var(--cyan);border:none;border-radius:10px;padding:10px 16px;color:#fff;font-weight:700;cursor:pointer;font-size:16px}
 
 /* === EMPTY STATE === */
 .es{text-align:center;padding:40px 20px;color:rgba(255,255,255,0.4)}
@@ -198,6 +198,16 @@ textarea{resize:none;height:80px}
 /* === ANIMATIONS === */
 @keyframes rp{0%,100%{box-shadow:0 0 0 0 rgba(230,57,70,0)}50%{box-shadow:0 0 0 6px rgba(230,57,70,0.2)}}
 @keyframes gm{from{background-position:0 0}to{background-position:40px 40px}}
+
+.stab{flex:1;padding:7px 4px;background:transparent;border:none;border-radius:8px;color:rgba(255,255,255,0.5);font-family:'Orbitron',sans-serif;font-size:7.5px;cursor:pointer;transition:all 0.2s;letter-spacing:0.5px;text-align:center}
+.stab.son{background:rgba(0,200,232,0.2);color:var(--cyan);border:1px solid rgba(0,200,232,0.4)}
+.lrb{background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:12px 8px;cursor:pointer;transition:all 0.2s;text-align:center}
+.lrb:hover{background:rgba(255,255,255,0.08);transform:translateY(-1px)}
+.lrt{font-family:'Orbitron',sans-serif;font-size:8px;letter-spacing:0.5px;line-height:1.4}
+.smg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:12px}
+.smc{background:rgba(0,0,0,0.3);border:1px solid rgba(0,200,232,0.15);border-radius:10px;padding:10px 6px;text-align:center}
+.smn{font-family:'Orbitron',sans-serif;font-size:22px;font-weight:700;display:block;line-height:1}
+.sml{font-size:8px;color:rgba(255,255,255,0.45);margin-top:4px;font-family:'Rajdhani',sans-serif;letter-spacing:1px;text-transform:uppercase}
 </style>
 </head>
 <body>
@@ -276,21 +286,21 @@ textarea{resize:none;height:80px}
 
   <!-- TALIAN KECEMASAN -->
   <div class="in">
-    <div class="htl2">📞 TALIAN KECEMASAN</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-      <a href="tel:089772121" style="display:flex;align-items:center;gap:10px;background:rgba(0,200,232,0.08);border:1px solid rgba(0,200,232,0.35);border-radius:12px;padding:12px;text-decoration:none">
-        <span style="font-size:24px">📱</span>
-        <div>
-          <div style="font-family:'Orbitron',sans-serif;font-size:8px;color:rgba(255,255,255,0.5);letter-spacing:1px">HOTLINE IPD TAWAU</div>
-          <div style="font-family:'Orbitron',sans-serif;font-size:14px;font-weight:700;color:var(--cyan);margin-top:2px">089-772121</div>
+    <div class="htl2" style="font-size:11px">📞 TALIAN KECEMASAN</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <a href="tel:089772121" style="display:flex;align-items:center;gap:8px;background:rgba(0,200,232,0.08);border:1px solid rgba(0,200,232,0.35);border-radius:10px;padding:10px;text-decoration:none;min-width:0">
+        <span style="font-size:18px;flex-shrink:0">📱</span>
+        <div style="min-width:0;overflow:hidden">
+          <div style="font-family:'Orbitron',sans-serif;font-size:7px;color:rgba(255,255,255,0.5);letter-spacing:0.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">HOTLINE IPD TAWAU</div>
+          <div style="font-family:'Orbitron',sans-serif;font-size:11px;font-weight:700;color:var(--cyan);margin-top:1px">089-772121</div>
         </div>
       </a>
-      <a href="tel:999" style="display:flex;align-items:center;gap:10px;background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.4);border-radius:12px;padding:12px;text-decoration:none;animation:rp 2s infinite">
-        <span style="font-size:24px">🚨</span>
-        <div>
-          <div style="font-family:'Orbitron',sans-serif;font-size:8px;color:rgba(255,255,255,0.5);letter-spacing:1px">KECEMASAN</div>
-          <div style="font-family:'Orbitron',sans-serif;font-size:10px;color:rgba(255,100,100,0.7);margin-top:1px">POLIS/BOMBA/APM/AMBULANS</div>
-          <div style="font-family:'Orbitron',sans-serif;font-size:22px;font-weight:700;color:#e63946;margin-top:1px">999</div>
+      <a href="tel:999" style="display:flex;align-items:center;gap:8px;background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.4);border-radius:10px;padding:10px;text-decoration:none;animation:rp 2s infinite;min-width:0">
+        <span style="font-size:18px;flex-shrink:0">🚨</span>
+        <div style="min-width:0">
+          <div style="font-family:'Orbitron',sans-serif;font-size:7px;color:rgba(255,255,255,0.5);letter-spacing:0.5px">KECEMASAN</div>
+          <div style="font-family:'Rajdhani',sans-serif;font-size:9px;color:rgba(255,100,100,0.7);margin-top:1px">POLIS/BOMBA/APM/AMBULANS</div>
+          <div style="font-family:'Orbitron',sans-serif;font-size:16px;font-weight:700;color:#e63946;margin-top:1px">999</div>
         </div>
       </a>
     </div>
@@ -320,7 +330,8 @@ textarea{resize:none;height:80px}
 
 <!-- BORANG JENAYAH -->
 <div id="p-jenayah" class="pg">
-  <button class="bk" onclick="nav('p-home')">← KEMBALI KE UTAMA</button>
+  
+      <button class="bk" onclick="nav('p-home')">← KEMBALI KE UTAMA</button>
   <div class="fc">
     <div class="ph"><span class="phi">🚨</span><div class="pht" style="color:#e63946">ADUAN JENAYAH</div></div>
     <div style="background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.25);border-radius:10px;padding:10px;margin-bottom:14px;font-size:12px;color:rgba(255,255,255,0.7);font-family:'Rajdhani',sans-serif;line-height:1.6">
@@ -353,8 +364,21 @@ textarea{resize:none;height:80px}
         <div class="fg"><div class="fl">MASA</div><input type="time" id="j-ms"></div>
       </div>
       <div class="fg"><div class="fl">LOKASI KEJADIAN <span>*</span></div><input type="text" id="j-lk" placeholder="Alamat / kawasan kejadian" required></div>
+      
+      <!-- GAMBAR BUKTI -->
+      <div class="ff">
+        <div class="fl">📷 GAMBAR ADUAN / BUKTI <span style="color:rgba(255,255,255,0.4);font-size:10px">(Pilihan - Maks 5MB)</span></div>
+        <label style="display:block;background:rgba(0,200,232,0.06);border:1.5px dashed rgba(0,200,232,0.35);border-radius:12px;padding:16px;text-align:center;cursor:pointer;transition:all 0.2s" id="j-img-label">
+          <input type="file" id="j-img" accept="image/*" style="display:none" onchange="previewImg('j')">
+          <div id="j-img-preview">
+            <div style="font-size:28px;margin-bottom:4px">📁</div>
+            <div style="font-family:'Orbitron',sans-serif;font-size:9px;color:var(--cyan);letter-spacing:1px">PILIH GAMBAR</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:3px">JPG / PNG / WEBP</div>
+          </div>
+        </label>
+      </div>
       <div class="gps">
-        <button type="button" class="gbtn" onclick="getGPS('j')">📍 GPS Auto</button>
+        <button type="button" class="gbtn" id="j-gpsbtn" onclick="getGPS('j')">📍 GPS Auto</button>
         <input type="text" id="j-lat" placeholder="Latitud" style="flex:1">
         <input type="text" id="j-lng" placeholder="Longitud" style="flex:1">
       </div>
@@ -375,7 +399,8 @@ textarea{resize:none;height:80px}
 
 <!-- BORANG NARKOTIK -->
 <div id="p-narkotik" class="pg">
-  <button class="bk" onclick="nav('p-home')">← KEMBALI KE UTAMA</button>
+  
+      <button class="bk" onclick="nav('p-home')">← KEMBALI KE UTAMA</button>
   <div class="fc">
     <div class="ph"><span class="phi">💊</span><div class="pht" style="color:#a569bd">ADUAN NARKOTIK</div></div>
     <div style="background:rgba(165,105,189,0.08);border:1px solid rgba(165,105,189,0.25);border-radius:10px;padding:10px;margin-bottom:14px;font-size:12px;color:rgba(255,255,255,0.7);font-family:'Rajdhani',sans-serif;line-height:1.6">
@@ -407,8 +432,21 @@ textarea{resize:none;height:80px}
         </select>
       </div>
       <div class="fg"><div class="fl">LOKASI KEJADIAN <span>*</span></div><input type="text" id="n-lk" placeholder="Alamat / kawasan" required></div>
+      
+      <!-- GAMBAR BUKTI -->
+      <div class="ff">
+        <div class="fl">📷 GAMBAR ADUAN / BUKTI <span style="color:rgba(255,255,255,0.4);font-size:10px">(Pilihan - Maks 5MB)</span></div>
+        <label style="display:block;background:rgba(0,200,232,0.06);border:1.5px dashed rgba(0,200,232,0.35);border-radius:12px;padding:16px;text-align:center;cursor:pointer;transition:all 0.2s" id="n-img-label">
+          <input type="file" id="n-img" accept="image/*" style="display:none" onchange="previewImg('n')">
+          <div id="n-img-preview">
+            <div style="font-size:28px;margin-bottom:4px">📁</div>
+            <div style="font-family:'Orbitron',sans-serif;font-size:9px;color:var(--cyan);letter-spacing:1px">PILIH GAMBAR</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:3px">JPG / PNG / WEBP</div>
+          </div>
+        </label>
+      </div>
       <div class="gps">
-        <button type="button" class="gbtn" onclick="getGPS('n')">📍 GPS Auto</button>
+        <button type="button" class="gbtn" id="n-gpsbtn" onclick="getGPS('n')">📍 GPS Auto</button>
         <input type="text" id="n-lat" placeholder="Latitud" style="flex:1">
         <input type="text" id="n-lng" placeholder="Longitud" style="flex:1">
       </div>
@@ -423,7 +461,8 @@ textarea{resize:none;height:80px}
 
 <!-- BORANG TRAFIK -->
 <div id="p-trafik" class="pg">
-  <button class="bk" onclick="nav('p-home')">← KEMBALI KE UTAMA</button>
+  
+      <button class="bk" onclick="nav('p-home')">← KEMBALI KE UTAMA</button>
   <div class="fc">
     <div class="ph"><span class="phi">🚦</span><div class="pht" style="color:#f39c12">ADUAN TRAFIK</div></div>
     <form onsubmit="subForm(event,'trafik')">
@@ -448,8 +487,21 @@ textarea{resize:none;height:80px}
         </div>
       </div>
       <div class="fg"><div class="fl">LOKASI <span>*</span></div><input type="text" id="t-lk" placeholder="Alamat / kawasan" required></div>
+      
+      <!-- GAMBAR BUKTI -->
+      <div class="ff">
+        <div class="fl">📷 GAMBAR ADUAN / BUKTI <span style="color:rgba(255,255,255,0.4);font-size:10px">(Pilihan - Maks 5MB)</span></div>
+        <label style="display:block;background:rgba(0,200,232,0.06);border:1.5px dashed rgba(0,200,232,0.35);border-radius:12px;padding:16px;text-align:center;cursor:pointer;transition:all 0.2s" id="t-img-label">
+          <input type="file" id="t-img" accept="image/*" style="display:none" onchange="previewImg('t')">
+          <div id="t-img-preview">
+            <div style="font-size:28px;margin-bottom:4px">📁</div>
+            <div style="font-family:'Orbitron',sans-serif;font-size:9px;color:var(--cyan);letter-spacing:1px">PILIH GAMBAR</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:3px">JPG / PNG / WEBP</div>
+          </div>
+        </label>
+      </div>
       <div class="gps">
-        <button type="button" class="gbtn" onclick="getGPS('t')">📍 GPS Auto</button>
+        <button type="button" class="gbtn" id="t-gpsbtn" onclick="getGPS('t')">📍 GPS Auto</button>
         <input type="text" id="t-lat" placeholder="Latitud" style="flex:1">
         <input type="text" id="t-lng" placeholder="Longitud" style="flex:1">
       </div>
@@ -606,7 +658,9 @@ textarea{resize:none;height:80px}
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 const firebaseConfig = {
   apiKey: "AIzaSyAV4iIR6QaYfj51EUtdFc4JpAsgeF8nbKE",
@@ -746,12 +800,25 @@ async function subForm(e, cat) {
   if (btn) { btn.disabled = true; btn.textContent = "⏳ MENGHANTAR..."; }
   var now = new Date();
   var refno = genRef(cat);
+  // Ambil gambar jika ada
+  var imgInput = document.getElementById(prefix + "-img");
+  var imgData = null;
+  if (imgInput && imgInput.files && imgInput.files[0]) {
+    try {
+      imgData = await new Promise(function(res) {
+        var fr = new FileReader();
+        fr.onload = function(e) { res(e.target.result); };
+        fr.readAsDataURL(imgInput.files[0]);
+      });
+    } catch(e) { imgData = null; }
+  }
   var r = {
     ref: refno, cat: cat, status: "received",
     submittedAt: now.toISOString(), submittedTimestamp: now.getTime(),
     actions: [{ time: now.toISOString(), text: "Aduan diterima dalam sistem digital IPD Tawau" }],
     priority: "med", anon: false, isNew: true
   };
+  if (imgData) r.gambar = imgData;
   // Sanitize - pastikan semua nilai adalah string, bukan undefined/null
   var g = function(id) {
     var el = document.getElementById(id);
@@ -947,7 +1014,7 @@ async function renderDash() {
     nb.textContent = newC + " BARU";
     btnDiv.appendChild(nb);
   }
-  [["📧 EMEL","ag",function(){openEmail();}],["🖨️ PDF","ac",function(){expPDF();}],["📊 EXCEL","av",function(){expCSV();}]].forEach(function(b) {
+  [["🖨️ PDF","ac",function(){expPDF();}],["📊 EXCEL","av",function(){expCSV();}]].forEach(function(b) {
     var btn = document.createElement("button");
     btn.className = "ab " + b[1]; btn.style.padding = "8px 12px"; btn.textContent = b[0]; btn.onclick = b[2];
     btnDiv.appendChild(btn);
@@ -958,11 +1025,12 @@ async function renderDash() {
   btnDiv.appendChild(outBtn);
   hdr.appendChild(btnDiv); dash.appendChild(hdr);
 
-  // Email status
-  var eck = document.createElement("div"); eck.className = "ck";
-  eck.innerHTML = '<div class="ct">📧 STATUS NOTIFIKASI EMEL</div>' + (emailCfg ? '<div class="eok">✅ Notifikasi emel AKTIF (' + emailCfg.email + ')</div>' : '<div class="ewn">⚠️ Notifikasi emel belum dikonfigurasi</div>');
-  if (!emailCfg) { var setupBtn = document.createElement("button"); setupBtn.className = "ab ag"; setupBtn.style.cssText = "width:100%;padding:10px;margin-top:4px"; setupBtn.textContent = "⚙️ SETUP EMEL SEKARANG"; setupBtn.onclick = openEmail; eck.appendChild(setupBtn); }
-  dash.appendChild(eck);
+  // Panel Laporan Rasmi Per-Bahagian
+  var lrPanel = document.createElement("div");
+  lrPanel.style.cssText = "background:linear-gradient(135deg,rgba(10,25,50,0.95),rgba(15,35,70,0.9));border:1.5px solid rgba(240,180,41,0.35);border-radius:14px;padding:14px;margin-bottom:14px";
+  buildLaporanPanel(lrPanel);
+  dash.appendChild(lrPanel);
+
 
   // Stats
   var sg = document.createElement("div"); sg.className = "sg";
@@ -1145,6 +1213,309 @@ function expCSV() {
   toast("✅ Fail Excel (CSV) dimuat turun!");
 }
 
+
+function buildLaporanPanel(panel) {
+  var bhgList = [
+    {key:"jenayah", icon:"🚨", title:"BAHAGIAN SIASATAN", sub:"JENAYAH", c:"rgba(230,57,70,0.5)", tc:"#e63946"},
+    {key:"narkotik", icon:"💊", title:"BAHAGIAN SIASATAN", sub:"JENAYAH NARKOTIK", c:"rgba(165,105,189,0.5)", tc:"#a569bd"},
+    {key:"komersil", icon:"💼", title:"BAHAGIAN SIASATAN", sub:"JENAYAH KOMERSIL", c:"rgba(243,156,18,0.5)", tc:"#f39c12"},
+    {key:"trafik", icon:"🚦", title:"BAHAGIAN SIASATAN &", sub:"PENGUATKUASAAN TRAFIK", c:"rgba(52,152,219,0.5)", tc:"#3498db"},
+  ];
+  var hd = document.createElement("div");
+  hd.style.cssText = "font-family:Orbitron,sans-serif;font-size:10px;color:var(--gold);letter-spacing:1.5px;margin-bottom:10px";
+  hd.textContent = "🗂️ CETAK LAPORAN RASMI PER-BAHAGIAN";
+  panel.appendChild(hd);
+  var grid = document.createElement("div");
+  grid.style.cssText = "display:grid;grid-template-columns:1fr 1fr;gap:7px";
+  bhgList.forEach(function(b) {
+    var btn = document.createElement("button");
+    btn.className = "lrb"; btn.style.borderColor = b.c; btn.style.color = b.tc;
+    btn.innerHTML = '<div style="font-size:16px;margin-bottom:3px">'+b.icon+'</div><div class="lrt">'+b.title+'</div><div class="lrt" style="font-size:7px;opacity:0.8">'+b.sub+'</div>';
+    btn.onclick = (function(k){ return function(){ cetakLaporan(k); }; })(b.key);
+    grid.appendChild(btn);
+  });
+  panel.appendChild(grid);
+  var btnR = document.createElement("button");
+  btnR.className = "lrb";
+  btnR.style.cssText = "width:100%;margin-top:7px;border-color:rgba(39,174,96,0.5);color:#27ae60;display:flex;align-items:center;justify-content:center;gap:10px";
+  btnR.innerHTML = '<span style="font-size:16px">🏠</span><div><div class="lrt">UNIT BALIK KAMPUNG / RONDAAN</div></div>';
+  btnR.onclick = function(){ cetakLaporan("rondaan"); };
+  panel.appendChild(btnR);
+}
+
+// ==========================================
+// LAPORAN RASMI PER-BAHAGIAN
+// ==========================================
+var BAHAGIAN = {
+  jenayah:  { kod:"BSJ",   nama:"BAHAGIAN SIASATAN JENAYAH",                     singkat:"JENAYAH",    warna:[26,58,110],  warnaTeks:[0,200,232],  emoji:"🚨" },
+  narkotik: { kod:"BSJN",  nama:"BAHAGIAN SIASATAN JENAYAH NARKOTIK",             singkat:"NARKOTIK",   warna:[60,20,80],   warnaTeks:[165,105,189],emoji:"💊" },
+  komersil: { kod:"BSJK",  nama:"BAHAGIAN SIASATAN JENAYAH KOMERSIL",             singkat:"KOMERSIL",   warna:[40,20,10],   warnaTeks:[243,156,18], emoji:"💼" },
+  trafik:   { kod:"BSPET", nama:"BAHAGIAN SIASATAN DAN PENGUATKUASAAN TRAFIK",    singkat:"TRAFIK",     warna:[60,40,5],    warnaTeks:[243,156,18], emoji:"🚦" },
+  rondaan:  { kod:"BRK",   nama:"UNIT BALIK KAMPUNG / RONDAAN",                   singkat:"BALIK KAMPUNG",warna:[10,40,20], warnaTeks:[39,174,96],  emoji:"🏠" },
+};
+
+function cetakLaporan(bahagianKey) {
+  var fb = window.FB;
+  if (!fb || !fb.ready) { toast("⚠️ Firebase belum bersedia","terr"); return; }
+  var rpts = Object.values(reports);
+  if (!rpts.length) { toast("⚠️ Tiada data aduan","terr"); return; }
+
+  var bhg = BAHAGIAN[bahagianKey];
+  if (!bhg) { toast("Bahagian tidak sah","terr"); return; }
+
+  // Tapis aduan mengikut bahagian
+  var catKey = bahagianKey === "komersil" ? "jenayah" : bahagianKey;
+  var filtered;
+  if (bahagianKey === "komersil") {
+    // Komersil = jenayah jenis penipuan/scam/komersil
+    filtered = rpts.filter(function(r) {
+      return r.cat === "jenayah" && r.jenis && /penipuan|scam|komersil|tipu|fraud/i.test(r.jenis);
+    });
+    if (!filtered.length) {
+      // Kalau kosong, ambil semua jenayah komersil
+      filtered = rpts.filter(function(r) { return r.cat === "jenayah"; });
+    }
+  } else {
+    filtered = rpts.filter(function(r) { return r.cat === catKey; });
+  }
+
+  toast("⏳ Menjana laporan rasmi " + bhg.singkat + "...");
+
+  setTimeout(function() {
+    try {
+      var jsPDF = window.jspdf ? window.jspdf.jsPDF : window.jsPDF;
+      var doc = new jsPDF("p","mm","a4");
+      var now = new Date();
+      var noRuj = "IPD.TWU/" + bhg.kod + "/" + now.getFullYear() + "/" + String(Math.floor(Math.random()*9000)+1000);
+      var tarikh = now.toLocaleDateString("ms-MY", {day:"2-digit",month:"long",year:"numeric"});
+      var masa = now.toLocaleTimeString("ms-MY", {hour:"2-digit",minute:"2-digit"});
+      var pageW = 210; var margin = 20;
+
+      // ── KEPALA SURAT ──────────────────────────────
+      // Bar atas biru
+      doc.setFillColor(bhg.warna[0], bhg.warna[1], bhg.warna[2]);
+      doc.rect(0, 0, pageW, 40, "F");
+      doc.setFillColor(bhg.warnaTeks[0], bhg.warnaTeks[1], bhg.warnaTeks[2]);
+      doc.rect(0, 38, pageW, 1.5, "F");
+
+      // PDRM & IPD Tawau
+      doc.setTextColor(255,255,255);
+      doc.setFont("helvetica","bold");
+      doc.setFontSize(10);
+      doc.text("POLIS DIRAJA MALAYSIA", margin, 11);
+      doc.setFont("helvetica","normal");
+      doc.setFontSize(8);
+      doc.text("IBU PEJABAT POLIS DAERAH TAWAU, SABAH", margin, 17);
+      doc.text("No. 1, Jalan Baru, 91000 Tawau, Sabah  |  Tel: 089-772121", margin, 22);
+      doc.text("Faks: 089-XXXXXXX  |  Emel: ipdtawau@rmp.gov.my", margin, 27);
+
+      // Nama bahagian - kanan
+      doc.setFont("helvetica","bold");
+      doc.setFontSize(9);
+      doc.setTextColor(bhg.warnaTeks[0], bhg.warnaTeks[1], bhg.warnaTeks[2]);
+      var bhgLines = doc.splitTextToSize(bhg.nama, 80);
+      doc.text(bhgLines, pageW - margin, 12, {align:"right"});
+
+      // LAPORAN ADUAN SISTEM DIGITAL
+      doc.setFillColor(240,240,240);
+      doc.rect(margin, 46, pageW - (margin*2), 14, "F");
+      doc.setDrawColor(200,200,200);
+      doc.rect(margin, 46, pageW - (margin*2), 14, "S");
+      doc.setFont("helvetica","bold");
+      doc.setFontSize(13);
+      doc.setTextColor(20,20,20);
+      doc.text("LAPORAN ADUAN MASYARAKAT — SISTEM DIGITAL mySalur", pageW/2, 54, {align:"center"});
+      doc.setFont("helvetica","normal");
+      doc.setFontSize(9);
+      doc.text(bhg.nama, pageW/2, 58, {align:"center"});
+
+      // Maklumat dokumen
+      var y = 68;
+      doc.setFontSize(9);
+      doc.setTextColor(40,40,40);
+      var infoLeft = [
+        ["NO. RUJUKAN", noRuj],
+        ["TARIKH LAPORAN", tarikh],
+        ["MASA DIJANA", masa],
+      ];
+      var infoRight = [
+        ["JUMLAH ADUAN", String(filtered.length)],
+        ["TEMPOH DATA", "SEMUA REKOD"],
+        ["STATUS", "SULIT / RASMI"],
+      ];
+      infoLeft.forEach(function(row, i) {
+        doc.setFont("helvetica","bold"); doc.setFontSize(8);
+        doc.text(row[0] + " :", margin, y + (i*6));
+        doc.setFont("helvetica","normal");
+        doc.text(row[1], margin + 40, y + (i*6));
+      });
+      infoRight.forEach(function(row, i) {
+        doc.setFont("helvetica","bold"); doc.setFontSize(8);
+        doc.text(row[0] + " :", pageW/2 + 5, y + (i*6));
+        doc.setFont("helvetica","normal");
+        doc.text(row[1], pageW/2 + 45, y + (i*6));
+      });
+
+      // Garisan pemisah
+      y += 22;
+      doc.setDrawColor(bhg.warna[0], bhg.warna[1], bhg.warna[2]);
+      doc.setLineWidth(0.5);
+      doc.line(margin, y, pageW - margin, y);
+      y += 5;
+
+      // ── JADUAL ADUAN ──────────────────────────────
+      if (!filtered.length) {
+        doc.setFont("helvetica","italic");
+        doc.setFontSize(10);
+        doc.setTextColor(120,120,120);
+        doc.text("[ Tiada aduan bagi bahagian ini ]", pageW/2, y + 20, {align:"center"});
+      } else {
+        var statLabels = {received:"Diterima",processing:"Dalam Proses",action:"Tindakan Diambil",closed:"Selesai/Ditutup"};
+        var priLabels = {high:"TINGGI",med:"SEDERHANA",low:"RENDAH"};
+        var rows = filtered.slice().sort(function(a,b){ return new Date(b.submittedAt)-new Date(a.submittedAt); })
+          .map(function(r, i) {
+            return [
+              String(i+1),
+              r.ref || "-",
+              r.anon ? "TANPA NAMA" : (r.nama || "-").toUpperCase(),
+              r.tel || "-",
+              r.jenis || "-",
+              r.lokasi || r.alamat || "-",
+              new Date(r.submittedAt).toLocaleDateString("ms-MY"),
+              priLabels[r.priority] || "-",
+              statLabels[r.status] || r.status || "-",
+              r.latestAction || "-",
+            ];
+          });
+
+        doc.autoTable({
+          startY: y,
+          head: [["BIL","NO. RUJUKAN","NAMA PELAPOR","NO. TEL","JENIS","LOKASI KEJADIAN","TARIKH","KEUTAMAAN","STATUS","TINDAKAN TERAKHIR"]],
+          body: rows,
+          theme: "grid",
+          headStyles: {
+            fillColor: [bhg.warna[0], bhg.warna[1], bhg.warna[2]],
+            textColor: [255,255,255],
+            fontSize: 7.5, fontStyle: "bold", halign: "center",
+            cellPadding: 3,
+          },
+          bodyStyles: { fontSize: 7, textColor: [30,30,30], cellPadding: 2.5 },
+          alternateRowStyles: { fillColor: [245,248,252] },
+          columnStyles: {
+            0: { halign:"center", cellWidth:7 },
+            1: { cellWidth:28 },
+            2: { cellWidth:28 },
+            3: { cellWidth:22 },
+            4: { cellWidth:22 },
+            5: { cellWidth:30 },
+            6: { halign:"center", cellWidth:18 },
+            7: { halign:"center", cellWidth:18 },
+            8: { halign:"center", cellWidth:18 },
+          },
+          margin: { left: margin, right: margin },
+          didDrawPage: function(data) {
+            // Footer setiap page
+            var pCount = doc.internal.getNumberOfPages();
+            doc.setFontSize(7); doc.setTextColor(120,120,120);
+            doc.text("IPD TAWAU | " + bhg.nama + " | " + noRuj, margin, 290);
+            doc.text("Halaman " + data.pageNumber + "/" + pCount, pageW - margin, 290, {align:"right"});
+            doc.setDrawColor(200,200,200);
+            doc.line(margin, 287, pageW-margin, 287);
+          }
+        });
+      }
+
+      // ── RINGKASAN STATISTIK ──────────────────────
+      var finalY = doc.lastAutoTable ? doc.lastAutoTable.finalY + 10 : y + 30;
+      if (finalY > 250) { doc.addPage(); finalY = 20; }
+
+      doc.setFont("helvetica","bold");
+      doc.setFontSize(9);
+      doc.setTextColor(bhg.warna[0], bhg.warna[1], bhg.warna[2]);
+      doc.text("RINGKASAN STATISTIK", margin, finalY);
+      doc.setLineWidth(0.3);
+      doc.setDrawColor(bhg.warna[0], bhg.warna[1], bhg.warna[2]);
+      doc.line(margin, finalY+2, margin+50, finalY+2);
+
+      var statData = [
+        ["Jumlah Aduan", String(filtered.length)],
+        ["Aduan Diterima", String(filtered.filter(function(r){return r.status==="received";}).length)],
+        ["Dalam Proses", String(filtered.filter(function(r){return r.status==="processing";}).length)],
+        ["Tindakan Diambil", String(filtered.filter(function(r){return r.status==="action";}).length)],
+        ["Selesai/Ditutup", String(filtered.filter(function(r){return r.status==="closed";}).length)],
+        ["Keutamaan Tinggi", String(filtered.filter(function(r){return r.priority==="high";}).length)],
+      ];
+
+      doc.setFontSize(8); doc.setTextColor(40,40,40);
+      statData.forEach(function(row, i) {
+        var col = i < 3 ? 0 : 1;
+        var row2 = i < 3 ? i : i - 3;
+        var sx = margin + (col * 90);
+        var sy = finalY + 8 + (row2 * 7);
+        doc.setFont("helvetica","bold"); doc.text(row[0] + ":", sx, sy);
+        doc.setFont("helvetica","normal"); doc.text(row[1], sx + 45, sy);
+      });
+
+      // ── RUANG TANDATANGAN ────────────────────────
+      var sigY = finalY + 40;
+      if (sigY > 260) { doc.addPage(); sigY = 20; }
+
+      doc.setFontSize(8); doc.setTextColor(40,40,40);
+      doc.setFont("helvetica","normal");
+
+      var sigs = [
+        ["DISEDIAKAN OLEH", "Anggota Polis Yang Bertugas", "IPD Tawau"],
+        ["DISEMAK OLEH", "Ketua Bahagian", bhg.nama],
+        ["DILULUSKAN OLEH", "Pegawai Penyiasat Kanan", "IPD Tawau"],
+      ];
+
+      sigs.forEach(function(sig, i) {
+        var sx = margin + (i * 57);
+        doc.setFont("helvetica","bold"); doc.setFontSize(7.5);
+        doc.text(sig[0], sx + 22, sigY, {align:"center"});
+        doc.setLineWidth(0.4); doc.setDrawColor(60,60,60);
+        doc.line(sx + 2, sigY + 18, sx + 44, sigY + 18);
+        doc.setFont("helvetica","normal"); doc.setFontSize(7);
+        doc.text(sig[1], sx + 22, sigY + 23, {align:"center"});
+        doc.text(sig[2], sx + 22, sigY + 28, {align:"center"});
+        doc.text("Tarikh: ___ / ___ / ______", sx + 22, sigY + 34, {align:"center"});
+        doc.text("Cap Rasmi:", sx + 22, sigY + 40, {align:"center"});
+        doc.setDrawColor(160,160,160);
+        doc.circle(sx + 22, sigY + 52, 10, "S");
+      });
+
+      // NOTA RASMI
+      var noteY = sigY + 68;
+      if (noteY > 270) { doc.addPage(); noteY = 20; }
+      doc.setFillColor(255,250,230);
+      doc.rect(margin, noteY, pageW-(margin*2), 14, "F");
+      doc.setDrawColor(200,180,0);
+      doc.rect(margin, noteY, pageW-(margin*2), 14, "S");
+      doc.setFont("helvetica","bold"); doc.setFontSize(7.5); doc.setTextColor(100,70,0);
+      doc.text("NOTA: ", margin + 3, noteY + 5);
+      doc.setFont("helvetica","normal");
+      doc.text("Dokumen ini dijana secara automatik oleh Sistem Aduan Digital mySalur, IPD Tawau. Maklumat di dalam dokumen ini adalah", margin + 14, noteY + 5);
+      doc.text("SULIT dan hanya untuk kegunaan dalaman pihak polis. Sebarang pendedahan kepada pihak lain adalah dilarang.", margin + 3, noteY + 10);
+
+      // Footer last page
+      doc.setFontSize(7); doc.setTextColor(120,120,120);
+      doc.text("IPD TAWAU | " + bhg.nama + " | " + noRuj, margin, 290);
+      doc.text("Halaman " + doc.internal.getNumberOfPages() + "/" + doc.internal.getNumberOfPages(), pageW-margin, 290, {align:"right"});
+      doc.setDrawColor(200,200,200);
+      doc.line(margin, 287, pageW-margin, 287);
+
+      var fname = "LaporanRasmi_" + bhg.singkat.replace(/\s/g,"_") + "_" + now.getFullYear() + String(now.getMonth()+1).padStart(2,"0") + String(now.getDate()).padStart(2,"0") + ".pdf";
+      doc.save(fname);
+      toast("✅ Laporan " + bhg.singkat + " berjaya dijana!");
+    } catch(e) {
+      console.error(e);
+      toast("❌ Ralat: " + e.message, "terr");
+    }
+  }, 100);
+}
+
+
+
 // ==========================================
 // STATISTICS
 // ==========================================
@@ -1153,49 +1524,163 @@ function renderStats() {
   var area = document.getElementById("stats-area");
   if (!rpts.length) { area.innerHTML = '<div class="es"><div class="ei">📊</div><div class="et">Belum ada data aduan</div></div>'; return; }
 
+  // Kira data
   var byCat = {jenayah:0,narkotik:0,trafik:0,rondaan:0};
   var byStatus = {received:0,processing:0,action:0,closed:0};
-  var byPri = {high:0,med:0,low:0};
-  var byMonth = {};
+  var byWeek = {}; var byMonth = {}; var byYear = {};
+  var byLokasi = {};
+  var now = new Date();
+
   rpts.forEach(function(r) {
     if (byCat[r.cat] !== undefined) byCat[r.cat]++;
     if (byStatus[r.status] !== undefined) byStatus[r.status]++;
-    if (byPri[r.priority] !== undefined) byPri[r.priority]++;
     var d = new Date(r.submittedAt);
+    // Mingguan - 8 minggu lepas
+    var wk = Math.floor((now - d) / (7*24*3600*1000));
+    if (wk < 8) { var wkey = "M-" + wk; byWeek[wkey] = (byWeek[wkey]||0) + 1; }
+    // Bulanan
     var mk = d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0");
-    if (!byMonth[mk]) byMonth[mk] = {jenayah:0,narkotik:0,trafik:0,rondaan:0};
-    byMonth[mk].total = (byMonth[mk].total || 0) + 1;
-    if (byMonth[mk][r.cat] !== undefined) byMonth[mk][r.cat]++;
+    byMonth[mk] = (byMonth[mk]||0) + 1;
+    // Tahunan
+    var yk = String(d.getFullYear());
+    byYear[yk] = (byYear[yk]||0) + 1;
+    // Lokasi
+    var lok = (r.lokasi || r.alamat || "").trim();
+    if (lok && lok.length > 3) {
+      // Ambil keyword utama (kawasan)
+      var kawasan = lok.split(',')[0].split('/')[0].trim().toUpperCase();
+      if (kawasan.length > 2 && kawasan.length < 40) {
+        byLokasi[kawasan] = (byLokasi[kawasan]||0) + 1;
+      }
+    }
   });
 
-  var months = Object.keys(byMonth).sort().slice(-6);
-  var mNames = ["","Jan","Feb","Mac","Apr","Mei","Jun","Jul","Ogs","Sep","Okt","Nov","Dis"];
-  var mLabels = months.map(function(m) { var p = m.split("-"); return mNames[parseInt(p[1])] + " " + p[0]; });
-
-  Object.values(charts).forEach(function(c) { if(c) c.destroy(); });
+  // Destroy old charts
+  Object.values(charts).forEach(function(c){ if(c && c.destroy) c.destroy(); });
   charts = {};
 
-  area.innerHTML =
-    '<div class="hero" style="padding:8px 0 14px"><div class="htl" style="font-size:18px">📊 STATISTIK ADUAN</div></div>' +
-    '<div class="smg"><div class="smc"><span class="smn" style="color:var(--cyan)">' + rpts.length + '</span><div class="sml">JUMLAH</div></div><div class="smc"><span class="smn" style="color:var(--red)">' + byPri.high + '</span><div class="sml">KEUTAMAAN TINGGI</div></div><div class="smc"><span class="smn" style="color:#27ae60">' + byStatus.closed + '</span><div class="sml">KES SELESAI</div></div><div class="smc"><span class="smn" style="color:var(--gold)">' + (byStatus.received+byStatus.processing) + '</span><div class="sml">KES AKTIF</div></div></div>' +
-    '<div class="cc2"><div class="ctt">🥧 MENGIKUT KATEGORI</div><div class="cw"><canvas id="c-cat"></canvas></div></div>' +
-    '<div class="cc2"><div class="ctt">📊 ADUAN BULANAN</div><div class="cwl"><canvas id="c-mon"></canvas></div></div>' +
-    '<div class="cc2"><div class="ctt">📋 STATUS ADUAN</div><div class="cw"><canvas id="c-sta"></canvas></div></div>' +
-    '<div class="cc2"><div class="ctt">⚡ TAHAP KEUTAMAAN</div><div class="cw"><canvas id="c-pri"></canvas></div></div>' +
-    '<div class="er"><button class="eb ep" onclick="expPDF()">🖨️ EKSPORT PDF</button><button class="eb ec" onclick="expCSV()">📊 EKSPORT EXCEL</button></div>';
+  var mNames = ["","Jan","Feb","Mac","Apr","Mei","Jun","Jul","Ogs","Sep","Okt","Nov","Dis"];
+  var tc = "rgba(255,255,255,0.6)"; var gc = "rgba(255,255,255,0.08)";
 
-  var tc = "rgba(255,255,255,0.6)"; var gc = "rgba(255,255,255,0.11)";
+  // Tab state
+  var curTab = window._statTab || "bulanan";
+
+  area.innerHTML = [
+    // Header stat boxes
+    '<div class="smg">',
+      '<div class="smc"><span class="smn" style="color:var(--cyan)">'+rpts.length+'</span><div class="sml">JUMLAH</div></div>',
+      '<div class="smc"><span class="smn" style="color:#e63946">'+byCat.jenayah+'</span><div class="sml">JENAYAH</div></div>',
+      '<div class="smc"><span class="smn" style="color:#a569bd">'+byCat.narkotik+'</span><div class="sml">NARKOTIK</div></div>',
+      '<div class="smc"><span class="smn" style="color:#f39c12">'+byCat.trafik+'</span><div class="sml">TRAFIK</div></div>',
+      '<div class="smc"><span class="smn" style="color:#27ae60">'+byStatus.closed+'</span><div class="sml">SELESAI</div></div>',
+      '<div class="smc"><span class="smn" style="color:var(--gold)">'+(byStatus.received+byStatus.processing+byStatus.action)+'</span><div class="sml">AKTIF</div></div>',
+    '</div>',
+    // Tab buttons
+    '<div style="display:flex;gap:6px;margin:12px 0 10px;background:rgba(0,0,0,0.3);border-radius:10px;padding:4px">',
+      '<button id="stab-mingguan" onclick="switchStatTab(\'mingguan\')" class="stab'+(curTab==='mingguan'?' son':'')+'">📅 MINGGUAN</button>',
+      '<button id="stab-bulanan" onclick="switchStatTab(\'bulanan\')" class="stab'+(curTab==='bulanan'?' son':'')+'">📆 BULANAN</button>',
+      '<button id="stab-tahunan" onclick="switchStatTab(\'tahunan\')" class="stab'+(curTab==='tahunan'?' son':'')+'">🗓️ TAHUNAN</button>',
+      '<button id="stab-lokasi" onclick="switchStatTab(\'lokasi\')" class="stab'+(curTab==='lokasi'?' son':'')+'">📍 LOKASI</button>',
+    '</div>',
+    // Chart containers
+    '<div id="stat-mingguan" style="display:'+(curTab==='mingguan'?'block':'none')+'"><div style="background:rgba(0,0,0,0.3);border-radius:12px;padding:14px;border:1px solid rgba(0,200,232,0.15)"><div style="font-family:\'Orbitron\',sans-serif;font-size:10px;color:var(--cyan);margin-bottom:10px;letter-spacing:1px">📅 ADUAN 8 MINGGU LEPAS</div><div style="position:relative;height:200px"><canvas id="chart-mingguan"></canvas></div></div></div>',
+    '<div id="stat-bulanan" style="display:'+(curTab==='bulanan'?'block':'none')+'"><div style="background:rgba(0,0,0,0.3);border-radius:12px;padding:14px;border:1px solid rgba(0,200,232,0.15)"><div style="font-family:\'Orbitron\',sans-serif;font-size:10px;color:var(--cyan);margin-bottom:10px;letter-spacing:1px">📆 ADUAN 12 BULAN LEPAS</div><div style="position:relative;height:200px"><canvas id="chart-bulanan"></canvas></div></div></div>',
+    '<div id="stat-tahunan" style="display:'+(curTab==='tahunan'?'block':'none')+'"><div style="background:rgba(0,0,0,0.3);border-radius:12px;padding:14px;border:1px solid rgba(0,200,232,0.15)"><div style="font-family:\'Orbitron\',sans-serif;font-size:10px;color:var(--cyan);margin-bottom:10px;letter-spacing:1px">🗓️ ADUAN TAHUNAN</div><div style="position:relative;height:200px"><canvas id="chart-tahunan"></canvas></div></div></div>',
+    '<div id="stat-lokasi" style="display:'+(curTab==='lokasi'?'block':'none')+'">',
+      '<div style="background:rgba(0,0,0,0.3);border-radius:12px;padding:14px;border:1px solid rgba(0,200,232,0.15);margin-bottom:10px">',
+        '<div style="font-family:\'Orbitron\',sans-serif;font-size:10px;color:var(--cyan);margin-bottom:10px;letter-spacing:1px">📍 TOP KAWASAN ADUAN</div>',
+        '<div id="lokasi-bars"></div>',
+      '</div>',
+      '<div style="background:rgba(0,0,0,0.3);border-radius:12px;padding:14px;border:1px solid rgba(0,200,232,0.15)">',
+        '<div style="font-family:\'Orbitron\',sans-serif;font-size:10px;color:var(--cyan);margin-bottom:8px;letter-spacing:1px">🗺️ PETA KAWASAN DAERAH TAWAU</div>',
+        '<div id="stat-map" style="width:100%;height:280px;border-radius:10px;overflow:hidden;border:1px solid rgba(0,200,232,0.2)"></div>',
+        '<div style="font-size:9px;color:rgba(255,255,255,0.3);margin-top:6px;text-align:center;font-family:Rajdhani,sans-serif">Sumber peta: OpenStreetMap · Kawasan Daerah Tawau</div>',
+      '</div>',
+    '</div>',
+    // Donut chart - kategori
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">',
+      '<div style="background:rgba(0,0,0,0.3);border-radius:12px;padding:14px;border:1px solid rgba(0,200,232,0.15)"><div style="font-family:\'Orbitron\',sans-serif;font-size:9px;color:var(--cyan);margin-bottom:8px">KATEGORI</div><div style="position:relative;height:130px"><canvas id="chart-kat"></canvas></div></div>',
+      '<div style="background:rgba(0,0,0,0.3);border-radius:12px;padding:14px;border:1px solid rgba(0,200,232,0.15)"><div style="font-family:\'Orbitron\',sans-serif;font-size:9px;color:var(--cyan);margin-bottom:8px">STATUS KES</div><div style="position:relative;height:130px"><canvas id="chart-status"></canvas></div></div>',
+    '</div>'
+  ].join('');
+
+  // ── Lokasi bars
+  var lokKeys = Object.entries(byLokasi).sort(function(a,b){return b[1]-a[1];}).slice(0,8);
+  var maxLok = lokKeys.length ? lokKeys[0][1] : 1;
+  var barsEl = document.getElementById("lokasi-bars");
+  if (barsEl) {
+    if (!lokKeys.length) {
+      barsEl.innerHTML = '<div style="text-align:center;color:rgba(255,255,255,0.3);font-size:11px;padding:20px">Tiada data lokasi</div>';
+    } else {
+      barsEl.innerHTML = lokKeys.map(function(e) {
+        var pct = Math.round(e[1]/maxLok*100);
+        return '<div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:10px;margin-bottom:3px"><span style="color:rgba(255,255,255,0.8);font-family:Rajdhani,sans-serif;font-weight:600">'+e[0]+'</span><span style="color:var(--cyan);font-family:Orbitron,sans-serif;font-size:9px">'+e[1]+' aduan</span></div><div style="background:rgba(255,255,255,0.08);border-radius:4px;height:8px"><div style="background:linear-gradient(90deg,var(--cyan),#0ff);height:8px;border-radius:4px;width:'+pct+'%;transition:width 0.5s"></div></div></div>';
+      }).join('');
+    }
+  }
+
+  // ── Peta Tawau (Leaflet via OpenStreetMap)
+  if (curTab === 'lokasi') {
+    setTimeout(function() { initStatMap(rpts); }, 200);
+  }
+
   setTimeout(function() {
-    var c1 = document.getElementById("c-cat");
-    if (c1) charts.cat = new Chart(c1, {type:"doughnut",data:{labels:["🚨 Jenayah","💊 Narkotik","🚦 Trafik","🏠 Balik Kampung"],datasets:[{data:[byCat.jenayah,byCat.narkotik,byCat.trafik,byCat.rondaan],backgroundColor:["rgba(230,57,70,0.8)","rgba(165,105,189,0.8)","rgba(243,156,18,0.8)","rgba(39,174,96,0.8)"],borderColor:["#e63946","#a569bd","#f39c12","#27ae60"],borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:"right",labels:{color:"rgba(255,255,255,0.8)",font:{size:11},padding:12}}}}});
-    var c2 = document.getElementById("c-mon");
-    if (c2) charts.mon = new Chart(c2, {type:"bar",data:{labels:mLabels,datasets:[{label:"Jenayah",data:months.map(function(m){return byMonth[m]?byMonth[m].jenayah:0;}),backgroundColor:"rgba(230,57,70,0.7)"},{label:"Narkotik",data:months.map(function(m){return byMonth[m]?byMonth[m].narkotik:0;}),backgroundColor:"rgba(165,105,189,0.7)"},{label:"Trafik",data:months.map(function(m){return byMonth[m]?byMonth[m].trafik:0;}),backgroundColor:"rgba(243,156,18,0.7)"},{label:"Rondaan",data:months.map(function(m){return byMonth[m]?byMonth[m].rondaan:0;}),backgroundColor:"rgba(39,174,96,0.7)"}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:"rgba(255,255,255,0.7)",font:{size:10}}}},scales:{x:{stacked:true,ticks:{color:tc,font:{size:10}},grid:{color:gc}},y:{stacked:true,ticks:{color:tc,stepSize:1},grid:{color:gc}}}}});
-    var c3 = document.getElementById("c-sta");
-    if (c3) charts.sta = new Chart(c3, {type:"pie",data:{labels:["📥 Diterima","⚙️ Proses","✅ Tindakan","🔒 Ditutup"],datasets:[{data:[byStatus.received,byStatus.processing,byStatus.action,byStatus.closed],backgroundColor:["rgba(52,152,219,0.8)","rgba(241,196,15,0.8)","rgba(39,174,96,0.8)","rgba(149,165,166,0.8)"],borderColor:["#3498db","#f1c40f","#27ae60","#95a5a6"],borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:"right",labels:{color:"rgba(255,255,255,0.8)",font:{size:11},padding:12}}}}});
-    var c4 = document.getElementById("c-pri");
-    if (c4) charts.pri = new Chart(c4, {type:"bar",data:{labels:["🔴 Tinggi","🟡 Sederhana","🟢 Rendah"],datasets:[{data:[byPri.high,byPri.med,byPri.low],backgroundColor:["rgba(230,57,70,0.7)","rgba(243,156,18,0.7)","rgba(39,174,96,0.7)"],borderColor:["#e63946","#f39c12","#27ae60"],borderWidth:2,borderRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:tc,font:{size:11}},grid:{display:false}},y:{ticks:{color:tc,stepSize:1},grid:{color:gc}}}}});
+    // ── MINGGUAN
+    var wkLabels = []; var wkData = [];
+    for (var w=7; w>=0; w--) {
+      wkLabels.push("M-"+w);
+      wkData.push(byWeek["M-"+w]||0);
+    }
+    var cw = document.getElementById("chart-mingguan");
+    if (cw) charts.mingguan = new Chart(cw, { type:"bar", data:{ labels:wkLabels, datasets:[{data:wkData,backgroundColor:"rgba(0,200,232,0.6)",borderColor:"var(--cyan)",borderWidth:1,borderRadius:4}]}, options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:tc,font:{size:9}},grid:{display:false}},y:{ticks:{color:tc,stepSize:1},grid:{color:gc}}}}});
+
+    // ── BULANAN
+    var allMonths = Object.keys(byMonth).sort().slice(-12);
+    var mLabels = allMonths.map(function(m){var p=m.split("-");return mNames[parseInt(p[1])]+"'"+p[0].slice(2);});
+    var mData = allMonths.map(function(m){return byMonth[m]||0;});
+    var cb = document.getElementById("chart-bulanan");
+    if (cb) charts.bulanan = new Chart(cb, { type:"line", data:{ labels:mLabels, datasets:[{data:mData,borderColor:"var(--cyan)",backgroundColor:"rgba(0,200,232,0.1)",fill:true,tension:0.4,pointBackgroundColor:"var(--cyan)",pointRadius:4}]}, options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:tc,font:{size:9}},grid:{display:false}},y:{ticks:{color:tc,stepSize:1},grid:{color:gc}}}}});
+
+    // ── TAHUNAN
+    var yKeys = Object.keys(byYear).sort();
+    var yData = yKeys.map(function(y){return byYear[y];});
+    var cy = document.getElementById("chart-tahunan");
+    if (cy) charts.tahunan = new Chart(cy, { type:"bar", data:{ labels:yKeys, datasets:[{data:yData,backgroundColor:["rgba(0,200,232,0.7)","rgba(240,180,41,0.7)","rgba(39,174,96,0.7)","rgba(165,105,189,0.7)"],borderRadius:6}]}, options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:tc},grid:{display:false}},y:{ticks:{color:tc,stepSize:1},grid:{color:gc}}}}});
+
+    // ── KATEGORI donut
+    var ck = document.getElementById("chart-kat");
+    if (ck) charts.kat = new Chart(ck, { type:"doughnut", data:{ labels:["Jenayah","Narkotik","Trafik","Balik Kampung"], datasets:[{data:[byCat.jenayah,byCat.narkotik,byCat.trafik,byCat.rondaan],backgroundColor:["#e63946","#a569bd","#f39c12","#27ae60"],borderWidth:2,borderColor:"rgba(0,0,0,0.3)"}]}, options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:"bottom",labels:{color:tc,font:{size:9},padding:6}}}}});
+
+    // ── STATUS donut
+    var cs = document.getElementById("chart-status");
+    if (cs) charts.status = new Chart(cs, { type:"doughnut", data:{ labels:["Diterima","Proses","Tindakan","Selesai"], datasets:[{data:[byStatus.received,byStatus.processing,byStatus.action,byStatus.closed],backgroundColor:["#3498db","#f1c40f","#27ae60","#95a5a6"],borderWidth:2,borderColor:"rgba(0,0,0,0.3)"}]}, options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:"bottom",labels:{color:tc,font:{size:9},padding:6}}}}});
   }, 150);
 }
+
+function switchStatTab(tab) {
+  window._statTab = tab;
+  ["mingguan","bulanan","tahunan","lokasi"].forEach(function(t) {
+    var el = document.getElementById("stat-"+t);
+    var btn = document.getElementById("stab-"+t);
+    if (el) el.style.display = (t===tab ? "block" : "none");
+    if (btn) { btn.classList.toggle("son", t===tab); }
+  });
+  if (tab === "lokasi") {
+    setTimeout(function() { initStatMap(Object.values(reports)); }, 300);
+  }
+}
+
+function initStatMap(rpts) {
+  var mapEl = document.getElementById("stat-map");
+  if (!mapEl) return;
+  // Guna iframe OpenStreetMap embed untuk Daerah Tawau
+  if (mapEl.dataset.loaded) return;
+  mapEl.dataset.loaded = "1";
+  // Koordinat pusat Tawau
+  var tawauLat = 4.2448, tawauLng = 117.8910;
+  mapEl.innerHTML = '<iframe width="100%" height="280" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=117.6,4.0,118.2,4.5&layer=mapnik&marker='+tawauLat+','+tawauLng+'" style="border:0;border-radius:10px"></iframe>';
+}
+
 
 // ==========================================
 // DETAIL MODAL
@@ -1204,8 +1689,8 @@ var curDetKey = null;
 
 function showDet(key) {
   var r = reports[key]; if (!r) return;
-  var labels = {nama:"Nama",tel:"No. Tel",kp:"No. KP",jenis:"Jenis",tarikh:"Tarikh",masa:"Masa",lokasi:"Lokasi",keterangan:"Keterangan",suspek:"Suspek",dadah:"Jenis Dadah",plat:"No. Plat",cedera:"Cedera",alamat:"Alamat",mula:"Berlepas",tamat:"Pulang",destinasi:"Destinasi",jiran:"Jiran"};
-  var skip = ["ref","cat","status","submittedAt","submittedTimestamp","actions","anon","latestAction","priority","isNew","_k"];
+  var labels = {nama:"Nama",tel:"No. Tel",kp:"No. KP",jenis:"Jenis",tarikh:"Tarikh",masa:"Masa",lokasi:"Lokasi",keterangan:"Keterangan",suspek:"Suspek",dadah:"Jenis Dadah",plat:"No. Plat",cedera:"Cedera",alamat:"Alamat",mula:"Berlepas",tamat:"Pulang",destinasi:"Destinasi",jiran:"Jiran",gambar:"Gambar Bukti"};
+  var skip = ["ref","cat","status","submittedAt","submittedTimestamp","actions","anon","latestAction","priority","isNew","_k","gambar"];
   var body = document.getElementById("det-body"); body.innerHTML = "";
   Object.entries(r).forEach(function(e) {
     if (skip.includes(e[0]) || !e[1]) return;
@@ -1213,6 +1698,11 @@ function showDet(key) {
     row.innerHTML = '<div class="dk">' + (labels[e[0]] || e[0]).toUpperCase() + '</div><div class="dv">' + e[1] + '</div>';
     body.appendChild(row);
   });
+  if (r.gambar) {
+    var imgRow = document.createElement("div"); imgRow.style.cssText = "margin:10px 0;border-top:1px solid rgba(255,255,255,0.06);padding-top:10px";
+    imgRow.innerHTML = '<div style="font-size:9px;color:rgba(255,255,255,0.4);font-family:Orbitron,sans-serif;letter-spacing:0.5px;margin-bottom:6px">📷 GAMBAR BUKTI</div><img src="'+r.gambar+'" style="width:100%;max-height:200px;object-fit:contain;border-radius:8px;border:1px solid rgba(0,200,232,0.3)">';
+    body.appendChild(imgRow);
+  }
   var logTitle = document.createElement("div"); logTitle.style.cssText = "margin-top:14px;font-size:10px;color:var(--cyan);letter-spacing:1px;margin-bottom:8px"; logTitle.textContent = "📊 LOG TINDAKAN";
   body.appendChild(logTitle);
   (r.actions || []).forEach(function(a) {
@@ -1265,6 +1755,23 @@ window.addEventListener("beforeinstallprompt", function(e) {
 });
 
 function doPWA() { if (deferPWA) { deferPWA.prompt(); deferPWA.userChoice.then(function(r){if(r.outcome==="accepted"){toast("✅ Aplikasi berjaya dipasang!");hideIB();}deferPWA=null;}); } }
+function previewImg(prefix) {
+  var input = document.getElementById(prefix + '-img');
+  var preview = document.getElementById(prefix + '-img-preview');
+  var label = document.getElementById(prefix + '-img-label');
+  if (!input || !input.files || !input.files[0]) return;
+  var file = input.files[0];
+  if (file.size > 5 * 1024 * 1024) { toast("⚠️ Gambar terlalu besar. Maksimum 5MB","terr"); input.value=""; return; }
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    if (preview) {
+      preview.innerHTML = "<img src='" + e.target.result + "' style='width:100%;max-height:180px;object-fit:cover;border-radius:10px;border:1px solid rgba(0,200,232,0.3)'><div style='font-size:10px;color:rgba(0,200,232,0.7);margin-top:6px;font-family:Rajdhani,sans-serif'>✅ " + file.name + " · " + (file.size/1024).toFixed(0) + "KB</div>";
+      if (label) label.style.borderColor = "rgba(0,200,232,0.7)";
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
 function hideIB() { document.getElementById("ib").style.display="none"; localStorage.setItem("pwa_done","1"); }
 
 function triggerPWA() {
@@ -1301,10 +1808,18 @@ document.querySelectorAll('input[type=date]').forEach(function(i) { i.value = ne
 // ==========================================
 // GPS KOORDINAT
 // ==========================================
-function getGPS(latId, lngId, btnId, statusId) {
+function getGPS(prefix, lngId, btnId, statusId) {
+  // Support single-prefix call: getGPS('j') OR full call: getGPS(latId,lngId,btnId,statusId)
+  if (!lngId || lngId === undefined) {
+    // Single prefix mode
+    var p = prefix;
+    latId = p + '-lat'; lngId = p + '-lng'; btnId = p + '-gpsbtn'; statusId = p + '-gpsstat';
+  } else {
+    var latId = prefix;
+  }
   var btn = document.getElementById(btnId);
   var statusEl = document.getElementById(statusId);
-  if (!navigator.geolocation) { alert("GPS tidak disokong pada peranti ini."); return; }
+  if (!navigator.geolocation) { toast("GPS tidak disokong pada peranti ini.","terr"); return; }
   if (btn) { btn.textContent = "⏳ Mencari lokasi..."; btn.disabled = true; }
   if (statusEl) statusEl.textContent = "Sedang mendapatkan koordinat...";
   navigator.geolocation.getCurrentPosition(function(pos) {
